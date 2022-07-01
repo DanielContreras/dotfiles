@@ -1,0 +1,13 @@
+local ls = require("luasnip")
+
+ls.snippets = {
+	all = {
+		ls.parser.parse_snippet("expand", "-- this is what was expanded!"),
+	},
+	lua = {
+		-- Lua specific snippets go here
+		--
+	},
+}
+
+expand

@@ -1,0 +1,22 @@
+Restart BSPWM,bspc wm -r 
+Restart Polybar,poly-reset
+Restart SXHKD,keeb-reset,input-keyboard
+^sep()
+
+Find Window Class,dunstify -i window_list "Find Window Class" "$(xprop WM_CLASS | tr -d '\n' | xclip -selection 'clipboard' -f)",window_list
+Randomize Wallpaper,feh --bg-fill --randomize "$HOME/Pictures/Wallpapers",phototonic
+^sep()
+
+Terminal,kitty
+Neovim,kitty nvim,nvim
+Ranger,kitty ranger,stock_folder
+^sep()
+
+Lock,lock,system-lock-screen
+Logout,pkill -KILL -u "$USER" &,system-log-out
+Exit,^checkout(exit)
+
+^tag(exit)
+Suspend,lock | systemctl suspend,system-suspend
+Reboot,reboot,system-reboot
+Poweroff,poweroff,system-shutdown
