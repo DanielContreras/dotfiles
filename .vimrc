@@ -1,3 +1,14 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                                                         "
+"               ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗                   "
+"               ██║   ██║██║████╗ ████║██╔══██╗██╔════╝                   "
+"               ██║   ██║██║██╔████╔██║██████╔╝██║                        "
+"               ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║                        "
+"                ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗                   "
+"                 ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝                   "
+"                                                                         "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " designed for vim 8+
 
 if has("eval")                               " vim-tiny lacks 'eval'
@@ -6,9 +17,10 @@ endif
 
 set nocompatible
 
+" set mouse support
 set mouse=a
 
-" set cursor in normal and insert mode 
+" set cursor style in normal and insert mode
 if &term =~ '^xterm'
     " normal mode - solid block
     let &t_EI .= "\<Esc>[2 q"
@@ -33,7 +45,7 @@ set ruler " see ruf for formatting
 " show command and insert mode
 set showmode
 
-set tabstop=2
+set tabstop=4
 
 "#######################################################################
 
@@ -64,7 +76,7 @@ if v:version >= 800
 endif
 
 " mark trailing spaces as errors
-match IncSearch '\s\+$'
+" match IncSearch '\s\+$'
 
 " enough for line numbers + gutter within 80 standard
 set textwidth=72
@@ -93,7 +105,7 @@ set nowritebackup
 set icon
 
 " center the cursor always on the screen
-set scrolloff=999
+set scrolloff=9
 
 " highlight search hits
 set hlsearch
@@ -107,10 +119,10 @@ set shortmess=aoOtTI
 set viminfo='20,<1000,s1000
 
 " not a fan of bracket matching or folding
-if has("eval") " vim-tiny detection
-  let g:loaded_matchparen=1
-endif
-set noshowmatch
+" if has("eval") " vim-tiny detection
+"   let g:loaded_matchparen=1
+" endif
+set showmatch
 
 " wrap around when searching
 set wrapscan
@@ -227,81 +239,27 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   " github.com/junegunn/vim-plug
 
   call plug#begin('~/.local/share/vim/plugins')
-  Plug 'frazrepo/vim-rainbow'
-  Plug 'vim-pandoc/vim-pandoc'
-  Plug 'pegn/pegn-syntax'
-  Plug 'rwxrob/vim-pandoc-syntax-simple'
-  Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-  Plug 'tpope/vim-fugitive'
-  Plug 'hashivim/vim-terraform'
-  Plug 'morhetz/gruvbox'
+  Plug 'frazrepo/vim-rainbow' " rainbow paran
+  Plug 'vim-pandoc/vim-pandoc' " markdown support
+  Plug 'rwxrob/vim-pandoc-syntax-simple' " syntax for md files and more
+  Plug 'tpope/vim-fugitive' " Git stuff
+  Plug 'EdenEast/nightfox.nvim' " colorscheme
+  Plug 'tpope/vim-commentary' " gcc sttyle commenting
+  Plug 'ryanoasis/vim-devicons' " Icons for nerdtree, lightline, etc
+  Plug 'preservim/nerdtree' " File explorer
+  Plug 'jiangmiao/auto-pairs' " Auto pair paranthesis, quotations, etc
   call plug#end()
-
-  " rainbow
-  " FIXME: only do this for non-pandoc file types
-  "let g:rainbow_active=1
-
-  " terraform
-  let g:terraform_fmt_on_save = 1
 
   " pandoc
   let g:pandoc#formatting#mode = 'h' " A'
   let g:pandoc#formatting#textwidth = 72
 
-  " golang
-  let g:go_fmt_fail_silently = 0
-  let g:go_fmt_command = 'goimports'
-  let g:go_fmt_autosave = 1
-  let g:go_gopls_enabled = 1
-  let g:go_highlight_types = 1
-  let g:go_highlight_fields = 1
-  let g:go_highlight_functions = 1
-  let g:go_highlight_function_calls = 1
-  let g:go_highlight_operators = 1
-  let g:go_highlight_extra_types = 1
-  let g:go_highlight_variable_declarations = 1
-  let g:go_highlight_variable_assignments = 1
-  let g:go_highlight_build_constraints = 1
-  let g:go_highlight_diagnostic_errors = 1
-  let g:go_highlight_diagnostic_warnings = 1
-  "let g:go_auto_type_info = 1 " forces 'Press ENTER' too much
-  let g:go_auto_sameids = 0
-  "let g:go_metalinter_command='golangci-lint'
-  "let g:go_metalinter_command='golint'
-  "let g:go_metalinter_autosave=1
-  set updatetime=100
-  "let g:go_gopls_analyses = { 'composites' : v:false }
-  au FileType go nmap <leader>t :GoTest!<CR>
-  au FileType go nmap <leader>v :GoVet!<CR>
-  au FileType go nmap <leader>b :GoBuild!<CR>
-  au FileType go nmap <leader>c :GoCoverageToggle<CR>
-  au FileType go nmap <leader>i :GoInfo<CR>
-  au FileType go nmap <leader>l :GoMetaLinter!<CR>
-  au FileType go nmap <leader>m ilog.Print("made")<CR><ESC>
-  au FileType go nmap <leader>n iif err != nil {return err}<CR><ESC>
 else
   autocmd vimleavepre *.go !gofmt -w % " backup if fatih fails
 endif
 
-" format perl on save
-if has("eval") " vim-tiny detection
-fun! s:Perltidy()
-  let l:pos = getcurpos()
-  silent execute '%!perltidy -i=2'
-  call setpos('.', l:pos)
-endfun
-"autocmd FileType perl autocmd BufWritePre <buffer> call s:Perltidy()
-endif
-
-"autocmd vimleavepre *.md !perl -p -i -e 's,(?<!\[)my `(\w+)` (package|module|repo|command|utility),[my `\1` \2](https://gitlab.com/rwxrob/\1),g' %
-
-" fill in empty markdown links with duck.com search
-" [some thing]() -> [some thing](https://duck.com/lite?kae=t&q=some thing)
-" s,/foo,/bar,g
-"autocmd vimleavepre *.md !perl -p -i -e 's,\[([^\]]+)\]\(\),[\1](https://duck.com/lite?kd=-1&kp=-1&q=\1),g' %
-
-autocmd BufWritePost *.md silent !toemoji %
-autocmd BufWritePost *.md silent !toduck %
+" set colorscheme
+colorscheme nordfox
 
 " fill in anything beginning with @ with a link to twitch to it
 " autocmd vimleavepre *.md !perl -p -i -e 's, @(\w+), [\\@\1](https://twitch.tv/\1),g' %
@@ -364,7 +322,6 @@ function! <SID>SynStack()
 endfunc
 endif
 
-
 " start at last place you were editing
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 "au BufWritePost ~/.vimrc so ~/.vimrc
@@ -381,15 +338,11 @@ map <F12> :set fdm=indent<CR>
 nmap <leader>2 :set paste<CR>i
 
 " disable arrow keys (vi muscle memory)
-"noremap <up> :echoerr "Umm, use k instead"<CR>
-"noremap <down> :echoerr "Umm, use j instead"<CR>
-"noremap <left> :echoerr "Umm, use h instead"<CR>
-" noremap <right> :echoerr "Umm, use l instead"<CR>
-" inoremap <up> <NOP>
-" inoremap <down> <NOP>
-" inoremap <left> <NOP>
-" inoremap <right> <NOP>
-"
+noremap <up> :echoerr "Umm, use k instead"<CR>
+noremap <down> :echoerr "Umm, use j instead"<CR>
+noremap <left> :echoerr "Umm, use h instead"<CR>
+noremap <right> :echoerr "Umm, use l instead"<CR>
+
 " better use of arrow keys, number increment/decrement
 nnoremap <up> <C-a>
 nnoremap <down> <C-x>
@@ -397,6 +350,12 @@ nnoremap <down> <C-x>
 " Better page down and page up
 noremap <C-n> <C-d>
 noremap <C-p> <C-b>
+
+" Nerdtree key mappings
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <leader>e :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
 " Set TMUX window name to name of file
 "au fileopened * !tmux rename-window TESTING
