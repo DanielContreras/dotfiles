@@ -35,3 +35,5 @@ set.updatetime = 300 -- faster completion (4000ms default)
 set.hidden = true -- yes
 
 vim.cmd([[set iskeyword+=-]]) -- treats - as a keyword, so if you dw select-all, it'll delete the entire word
+
+vim.laststatus = 3 -- Set global statusline
