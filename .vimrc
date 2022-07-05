@@ -36,7 +36,7 @@ set autoindent
 " automatically write files when changing when multiple files open
 set autowrite
 
-" deactivate line numbers
+" activate line numbers
 set number
 
 " turn col and row position on in bottom right
@@ -239,7 +239,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   " github.com/junegunn/vim-plug
 
   call plug#begin('~/.local/share/vim/plugins')
-  Plug 'frazrepo/vim-rainbow' " rainbow paran
   Plug 'vim-pandoc/vim-pandoc' " markdown support
   Plug 'rwxrob/vim-pandoc-syntax-simple' " syntax for md files and more
   Plug 'tpope/vim-fugitive' " Git stuff
