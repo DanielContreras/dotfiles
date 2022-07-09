@@ -53,6 +53,7 @@ set tabstop=4
 " disable visual bell (also disable in .inputrc)
 set t_vb=
 
+nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 set softtabstop=4
@@ -168,11 +169,11 @@ set cinoptions+=:0
 nnoremap confe :e $HOME/.vimrc<CR>
 nnoremap confr :source $HOME/.vimrc<CR>
 
+" statusline
 set ruf=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
 
 " only load plugins if Plug detected
 if filereadable(expand("~/.vim/autoload/plug.vim"))
-
   call plug#begin('~/.local/share/vim/plugins')
   Plug 'tpope/vim-fugitive' " Git stuff
   Plug 'EdenEast/nightfox.nvim' " colorscheme
@@ -180,10 +181,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'jiangmiao/auto-pairs' " Auto pair paranthesis, quotations, etc
   Plug 'vim-scripts/AutoComplPop' " Automatically show vim's built in completion
   call plug#end()
-
-  " pandoc
-  " let g:pandoc#formatting#mode = 'h' " A'
-  " let g:pandoc#formatting#textwidth = 72
 endif
 
 " set colorscheme
@@ -208,7 +205,6 @@ nnoremap <C-j> <nop>
 nnoremap <C-k> <nop>
 inoremap <expr> <C-j> pumvisible() ? "<C-n>" : "<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "<C-p>" : "<C-k>"
-
 
 " force some files to be specific file type
 au bufnewfile,bufRead $SNIPPETS/md/* set ft=pandoc
@@ -245,17 +241,6 @@ endfun
 autocmd BufNewFile,BufRead * call s:DetectBash()
 endif
 
-" displays all the syntax rules for current position, useful
-" when writing vimscript syntax plugins
-if has("syntax")
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-endif
-
 " start at last place you were editing
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 "au BufWritePost ~/.vimrc so ~/.vimrc
@@ -290,18 +275,7 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split=4
 let g:netrw_altv=1
-let g:netrw_winsize=25
-
-" define netrw mappings
-function! NetrwMappings()
-    noremap <buffer> <C-l> <C-w>l
-    noremap <silent> <leader>e :call ToggleNetrw()<CR>
-endfunction
-
-augroup netrw_mappings
-    autocmd!
-    autocmd filetype netrw call NetrwMappings()
-augroup END
+let g:netrw_winsize=20
 
 " function that toggles netrw
 function! ToggleNetrw()
@@ -316,22 +290,16 @@ function! ToggleNetrw()
         let g:NetrwIsOpen=0
     else
         let g:NetrwIsOpen=1
-        silent Lexplore
+        silent Vexplore
     endif
 endfunction
 
 " Close netrw if its the only open buffer
 autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw" || &buftype == 'quickfix' |q|endif
 
-" Open netrw automatically
-augroup ProjectDrawer
-    autocmd!
-    autocmd VimEnter * :call ToggleNetrw()
-augroup END
-
 let g:NetrwIsOpen=0
-"####################### End Netrw configuration #######################
+noremap <silent> <leader>e :call ToggleNetrw()<CR>
+"###################################################################
 
 " Set TMUX window name to name of file
 "au fileopened * !tmux rename-window TESTING
-
