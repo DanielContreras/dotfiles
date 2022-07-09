@@ -45,20 +45,11 @@ fi
 $HOME/.config/polybar/launch.sh
 
 #######################################
-# sleep 10 && $HOME/.config/bspwm/scripts/bspfloat floating 5 &> $HOME/.log.bspfloat.txt &
-# polybar &
-# pgrep -x sxhkd > /dev/null || sxhkd &
-eww daemon &
-# $HOME/.config/conky/Auva/start.sh &
+# eww daemon &
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 xfce4-power-manager &
-# bash $HOME/.config/bspwm/scripts/fix-plank
-# xsetroot -cursor_name left_ptr &
-# picom &
-# feh --bg-fill ~/.wallpapers/tokyo.png
 ukui-window-switch &
 parcellite &
-# plank &
 ##########################################
 
 bspc monitor eDP-1 -d 1 2 3 4 
@@ -80,11 +71,9 @@ bspc rule -a Peek state=floating
 bspc rule -a Thunar state=floating
 bspc rule -a Nitrogen state=floating
 bspc rule -a kitty state=tiled
-# bspc config external_rules_command "$HOME/.config/bspwm/scripts/external-rules"
 bspc rule -a conky-manager2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
-# bspc rule -a Plank manage=off border=off locked=on focus=off follow=off layer=above
 bspc rule -a Rofi state=floating
 bspc rule -a GLava state=floating layer=below sticky=true locked=true border=off focus=off center=true follow=off rectangle=1920x1080+0+0
 
