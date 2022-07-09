@@ -28,6 +28,7 @@ if &term =~ '^xterm'
     let &t_SI .= "\<Esc>[6 q"
 endif
 
+
 "####################### Vi Compatible (~/.exrc) #######################
 
 " automatically indent new lines
@@ -75,24 +76,14 @@ if v:version >= 800
   set nofoldenable
 endif
 
-" mark trailing spaces as errors
-" match IncSearch '\s\+$'
-
 " enough for line numbers + gutter within 80 standard
 set textwidth=72
-"set colorcolumn=73
 
 " replace tabs with spaces automatically
 set expandtab
 
-" disable relative line numbers, remove no to sample it
-set norelativenumber
-
-" makes ~ effectively invisible
-"highlight NonText guifg=bg
-
-" turn on default spell checking
-"set spell
+" set current line relative
+set relativenumber
 
 " disable spellcapcheck
 set spc=
@@ -118,10 +109,7 @@ set shortmess=aoOtTI
 " prevents truncated yanks, deletes, etc.
 set viminfo='20,<1000,s1000
 
-" not a fan of bracket matching or folding
-" if has("eval") " vim-tiny detection
-"   let g:loaded_matchparen=1
-" endif
+" Highlight match
 set showmatch
 
 " wrap around when searching
@@ -173,58 +161,7 @@ set ttyfast
 " allow sensing the filetype
 filetype plugin on
 
-" high contrast for streaming, etc.
-set background=dark
-
-" base default color changes (gruvbox dark friendly)
-hi StatusLine ctermfg=black ctermbg=NONE
-hi StatusLineNC ctermfg=black ctermbg=NONE
-hi Normal ctermbg=NONE
-hi Special ctermfg=cyan
-hi LineNr ctermfg=black ctermbg=NONE
-hi SpecialKey ctermfg=black ctermbg=NONE
-hi ModeMsg ctermfg=black cterm=NONE ctermbg=NONE
-hi MoreMsg ctermfg=black ctermbg=NONE
-hi NonText ctermfg=black ctermbg=NONE
-hi vimGlobal ctermfg=black ctermbg=NONE
-hi ErrorMsg ctermbg=234 ctermfg=darkred cterm=NONE
-hi Error ctermbg=234 ctermfg=darkred cterm=NONE
-hi SpellBad ctermbg=234 ctermfg=darkred cterm=NONE
-hi SpellRare ctermbg=234 ctermfg=darkred cterm=NONE
-hi Search ctermbg=236 ctermfg=darkred
-hi vimTodo ctermbg=236 ctermfg=darkred
-hi Todo ctermbg=236 ctermfg=darkred
-hi IncSearch ctermbg=236 cterm=NONE ctermfg=darkred
-hi MatchParen ctermbg=236 ctermfg=darkred
-
-" color overrides
-au FileType * hi StatusLine ctermfg=black ctermbg=NONE
-au FileType * hi StatusLineNC ctermfg=black ctermbg=NONE
-au FileType * hi Normal ctermbg=NONE
-au FileType * hi Special ctermfg=cyan
-au FileType * hi LineNr ctermfg=black ctermbg=NONE
-au FileType * hi SpecialKey ctermfg=black ctermbg=NONE
-au FileType * hi ModeMsg ctermfg=black cterm=NONE ctermbg=NONE
-au FileType * hi MoreMsg ctermfg=black ctermbg=NONE
-au FileType * hi NonText ctermfg=black ctermbg=NONE
-au FileType * hi vimGlobal ctermfg=black ctermbg=NONE
-au FileType * hi goComment ctermfg=black ctermbg=NONE
-au FileType * hi ErrorMsg ctermbg=234 ctermfg=darkred cterm=NONE
-au FileType * hi Error ctermbg=234 ctermfg=darkred cterm=NONE
-au FileType * hi SpellBad ctermbg=234 ctermfg=darkred cterm=NONE
-au FileType * hi SpellRare ctermbg=234 ctermfg=darkred cterm=NONE
-au FileType * hi Search ctermbg=236 ctermfg=darkred
-au FileType * hi vimTodo ctermbg=236 ctermfg=darkred
-au FileType * hi Todo ctermbg=236 ctermfg=darkred
-au FileType * hi IncSearch ctermbg=236 cterm=NONE ctermfg=darkred
-au FileType * hi MatchParen ctermbg=236 ctermfg=darkred
-au FileType markdown,pandoc hi Title ctermfg=yellow ctermbg=NONE
-au FileType markdown,pandoc hi Operator ctermfg=yellow ctermbg=NONE
-au FileType yaml hi yamlBlockMappingKey ctermfg=NONE
-au FileType yaml set sw=4
-au FileType bash set sw=2
-au FileType c set sw=8
-
+" dunno
 set cinoptions+=:0
 
 " Edit/Reload vimr configuration file
@@ -236,32 +173,21 @@ set ruf=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
 " only load plugins if Plug detected
 if filereadable(expand("~/.vim/autoload/plug.vim"))
 
-  " github.com/junegunn/vim-plug
-
   call plug#begin('~/.local/share/vim/plugins')
-  Plug 'vim-pandoc/vim-pandoc' " markdown support
-  Plug 'rwxrob/vim-pandoc-syntax-simple' " syntax for md files and more
   Plug 'tpope/vim-fugitive' " Git stuff
   Plug 'EdenEast/nightfox.nvim' " colorscheme
   Plug 'tpope/vim-commentary' " gcc sttyle commenting
-  Plug 'ryanoasis/vim-devicons' " Icons for nerdtree, lightline, etc
-  Plug 'preservim/nerdtree' " File explorer
   Plug 'jiangmiao/auto-pairs' " Auto pair paranthesis, quotations, etc
+  Plug 'vim-scripts/AutoComplPop' " Automatically show vim's built in completion
   call plug#end()
 
   " pandoc
-  let g:pandoc#formatting#mode = 'h' " A'
-  let g:pandoc#formatting#textwidth = 72
-
-else
-  autocmd vimleavepre *.go !gofmt -w % " backup if fatih fails
+  " let g:pandoc#formatting#mode = 'h' " A'
+  " let g:pandoc#formatting#textwidth = 72
 endif
 
 " set colorscheme
 colorscheme nordfox
-
-" fill in anything beginning with @ with a link to twitch to it
-" autocmd vimleavepre *.md !perl -p -i -e 's, @(\w+), [\\@\1](https://twitch.tv/\1),g' %
 
 " make Y consitent with D and C (yank til end)
 map Y y$
@@ -274,6 +200,15 @@ nnoremap <C-L> :nohl<CR><C-L>
 
 " enable omni-completion
 set omnifunc=syntaxcomplete#Complete
+set completeopt=menuone,longest
+set shortmess+=c
+
+" Set key mappings for navigating auto complete menu
+nnoremap <C-j> <nop>
+nnoremap <C-k> <nop>
+inoremap <expr> <C-j> pumvisible() ? "<C-n>" : "<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "<C-p>" : "<C-k>"
+
 
 " force some files to be specific file type
 au bufnewfile,bufRead $SNIPPETS/md/* set ft=pandoc
@@ -350,17 +285,53 @@ nnoremap <down> <C-x>
 noremap <C-n> <C-d>
 noremap <C-p> <C-b>
 
-" Nerdtree key mappings
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <leader>e :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+"####################### Netrw configuration #######################
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split=4
+let g:netrw_altv=1
+let g:netrw_winsize=25
+
+" define netrw mappings
+function! NetrwMappings()
+    noremap <buffer> <C-l> <C-w>l
+    noremap <silent> <leader>e :call ToggleNetrw()<CR>
+endfunction
+
+augroup netrw_mappings
+    autocmd!
+    autocmd filetype netrw call NetrwMappings()
+augroup END
+
+" function that toggles netrw
+function! ToggleNetrw()
+    if g:NetrwIsOpen
+        let i = bufnr("$")
+        while (i >= 1)
+            if (getbufvar(i, "&filetype") == "netrw")
+                silent exe "bwipeout " . i
+            endif
+            let i-=1
+        endwhile
+        let g:NetrwIsOpen=0
+    else
+        let g:NetrwIsOpen=1
+        silent Lexplore
+    endif
+endfunction
+
+" Close netrw if its the only open buffer
+autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw" || &buftype == 'quickfix' |q|endif
+
+" Open netrw automatically
+augroup ProjectDrawer
+    autocmd!
+    autocmd VimEnter * :call ToggleNetrw()
+augroup END
+
+let g:NetrwIsOpen=0
+"####################### End Netrw configuration #######################
 
 " Set TMUX window name to name of file
 "au fileopened * !tmux rename-window TESTING
-
-" read personal/private vim configuration (keep last to override)
-set rtp^=~/.vimpersonal
-set rtp^=~/.vimprivate
-set rtp^=~/.vimwork
 
