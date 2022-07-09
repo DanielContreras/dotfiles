@@ -20,7 +20,7 @@ set.fileencoding = "utf-8" -- file encoding
 set.termguicolors = true -- provide full color support for terminals that support it
 
 set.number = true -- shows row number on the side
-set.relativenumber = false -- sets the lines above and below relative to current
+set.relativenumber = true -- sets the lines above and below relative to current
 set.autoindent = true -- auto indent
 set.mouse = "a" -- turns on mouse suport
 set.syntax = "on" -- turns on basic syntax highlighting

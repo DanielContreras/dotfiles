@@ -4,6 +4,7 @@ require("nvim-treesitter.configs").setup({
 		"c",
 		"lua",
 		"rust",
+		"javascript",
 	},
 
 	sync_install = false,

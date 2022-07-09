@@ -51,6 +51,11 @@ require("lspconfig")["texlab"].setup({
 	capabilities = capabilities,
 	flags = lsp_flags,
 })
+-- require("lspconfig")["eslint"].setup({
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- 	flags = lsp_flags,
+-- })
 require("lspconfig")["tsserver"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
