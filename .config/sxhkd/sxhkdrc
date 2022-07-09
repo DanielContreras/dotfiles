@@ -6,8 +6,8 @@
 super + Return
     kitty
 
-~button3
-    jgmenu_run
+# ~button3
+#     jgmenu_run
 
 # Launch firefox
 super + b
