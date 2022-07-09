@@ -75,9 +75,9 @@ ZSH_THEME="robbyrussell"
 plugins=(
     git 
     vi-mode
-	zsh-syntax-highlighting
-	sudo
-	zsh-autosuggestions
+    zsh-syntax-highlighting
+    sudo
+    zsh-autosuggestions
     autojump
     colorize
 )
@@ -116,6 +116,7 @@ source $ZSH/oh-my-zsh.sh
 alias clean='sudo pacman -Rns $(pacman -Qtdq)' # remove orphans
 alias clean-cache='rm -rf ~/.cache/*' # remove cache from home 
 alias pac-update='sudo pacman -Syyu' # update packages 
+alias pac-overwrite='sudo pacman --overwrite "*" -Syu'
 
 # Changing "ls" to "exa"
 alias ls='exa --icons --color=always --group-directories-first'
