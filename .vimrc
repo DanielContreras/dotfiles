@@ -77,6 +77,16 @@ if v:version >= 800
   set nofoldenable
 endif
 
+" Keeps the current visual block after changing indent 
+vmap < <gv
+vmap > >gv
+
+" Shortcut split navigation
+map <A-h> <C-w>h
+map <A-j> <C-w>j
+map <A-k> <C-w>k
+map <A-l> <C-w>l
+
 " enough for line numbers + gutter within 100 lines
 set textwidth=92
 
@@ -176,7 +186,11 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'tpope/vim-commentary' " gcc sttyle commenting
   Plug 'jiangmiao/auto-pairs' " Auto pair paranthesis, quotations, etc
   Plug 'vim-scripts/AutoComplPop' " Automatically show vim's built in completion
+  " Not neccessary to have plugins
   Plug 'Yggdroot/indentLine' " Indent rules
+  Plug 'airblade/vim-gitgutter' " shows a 'gutter' of diff changes
+  Plug 'junegunn/fzf.vim' " fuzzy finding
+  Plug 'sheerun/vim-polyglot' " Better syntax highlighting
   call plug#end()
 endif
 
@@ -314,6 +328,9 @@ let g:indentLine_char_list = '|'
 
 " Set TMUX window name to name of file
 "au fileopened * !tmux rename-window TESTING
+
+" fzf  mapping 
+noremap <leader>f :Files<CR>
 
 " These filetypes will use 4 spaces instead of the default 2 spaces
 autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab
