@@ -46,7 +46,7 @@ set ruler " see ruf for formatting
 " show command and insert mode
 set showmode
 
-set tabstop=4
+set tabstop=2
 
 "#######################################################################
 
@@ -56,10 +56,10 @@ set t_vb=
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-set softtabstop=4
+set softtabstop=2
 
 " mostly used with >> and <<
-set shiftwidth=4
+set shiftwidth=2
 
 set smartindent
 
@@ -77,8 +77,8 @@ if v:version >= 800
   set nofoldenable
 endif
 
-" enough for line numbers + gutter within 80 standard
-set textwidth=72
+" enough for line numbers + gutter within 100 lines
+set textwidth=92
 
 " replace tabs with spaces automatically
 set expandtab
@@ -139,11 +139,7 @@ set fo+=M   " don't add space before or after multi-byte char
 set fo-=B   " don't add space between two multi-byte chars
 set fo+=1   " don't break a line after a one-letter word
 
-" requires PLATFORM env variable set (in ~/.bashrc)
-if $PLATFORM == 'mac'
-  " required for mac delete to work
-  set backspace=indent,eol,start
-endif
+set backspace=indent,eol,start
 
 " stop complaints about switching buffer with changes
 set hidden
@@ -180,6 +176,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'tpope/vim-commentary' " gcc sttyle commenting
   Plug 'jiangmiao/auto-pairs' " Auto pair paranthesis, quotations, etc
   Plug 'vim-scripts/AutoComplPop' " Automatically show vim's built in completion
+  Plug 'Yggdroot/indentLine' " Indent rules
   call plug#end()
 endif
 
@@ -233,10 +230,10 @@ au bufnewfile,bufRead commands.yaml set spell
 "fix bork bash detection
 if has("eval")  " vim-tiny detection
 fun! s:DetectBash()
-    if getline(1) == '#!/usr/bin/bash' || getline(1) == '#!/bin/bash'
-        set ft=bash
-        set shiftwidth=2
-    endif
+  if getline(1) == '#!/usr/bin/bash' || getline(1) == '#!/bin/bash'
+    set ft=bash
+    set shiftwidth=2
+  endif
 endfun
 autocmd BufNewFile,BufRead * call s:DetectBash()
 endif
@@ -275,31 +272,50 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split=4
 let g:netrw_altv=1
-let g:netrw_winsize=20
+let g:netrw_winsize=25
 
 " function that toggles netrw
 function! ToggleNetrw()
-    if g:NetrwIsOpen
-        let i = bufnr("$")
-        while (i >= 1)
-            if (getbufvar(i, "&filetype") == "netrw")
-                silent exe "bwipeout " . i
-            endif
-            let i-=1
-        endwhile
-        let g:NetrwIsOpen=0
-    else
-        let g:NetrwIsOpen=1
-        silent Vexplore
-    endif
+  if g:NetrwIsOpen
+    let i = bufnr("$")
+    while (i >= 1)
+      if (getbufvar(i, "&filetype") == "netrw")
+        silent exe "bwipeout " . i
+      endif
+      let i-=1
+    endwhile
+    let g:NetrwIsOpen=0
+  else
+    let g:NetrwIsOpen=1
+    silent Vexplore
+  endif
 endfunction
 
 " Close netrw if its the only open buffer
-autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw" || &buftype == 'quickfix' |q|endif
+autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw"|| &buftype == 'quickfix' |q|endif
 
 let g:NetrwIsOpen=0
 noremap <silent> <leader>e :call ToggleNetrw()<CR>
 "###################################################################
 
+
+" indentLine exclusions
+let g:indentLine_fileTypeExclude = ["vimwiki", "help", "undotree", "diff"]
+let g:indentLine_bufTypeExclude = ["help", "terminal"]
+let g:indentLine_indentLevel = 6
+
+" indentLine conceal settings
+let g:indentLine_setConceal = 1
+let g:indentLine_concealCursor = "inc"
+let g:indentLine_conceallevel = 2
+
+" chars to display
+let g:indentLine_char_list = '|'
+
 " Set TMUX window name to name of file
 "au fileopened * !tmux rename-window TESTING
+
+" These filetypes will use 4 spaces instead of the default 2 spaces
+autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab
+autocmd Filetype python setlocal ts=4 sw=4 sts=0 expandtab
+autocmd Filetype java setlocal ts=4 sw=4 sts=0 expandtab
