@@ -1,0 +1,419 @@
+% Some basic packages
+%\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[english]{babel}
+\usepackage{url}
+\usepackage{graphicx,wrapfig}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz-cd}
+\usepackage{hyperref, bookmark, imakeidx}
+\usepackage{cite}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=R,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\graphicspath{{./figures/}}
+%\tolerance=1
+%\emergencystretch=\maxdimen
+%\hyphenpenalty=10000
+%\hbadness=10000
+
+
+% Don't indent paragraphs, leave some space between them
+\usepackage{parskip}
+
+% Hide page number when page is empty
+\usepackage{emptypage}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{xcolor}
+
+% % Other font I sometimes use.
+% % \usepackage{cmbright}
+
+% Math stuff
+\usepackage{amsmath, amsfonts, mathtools, amsthm, amssymb, scrextend, commath, ifthen}
+\usepackage{coolstr, coollist, forloop, cool}
+% Fancy script capitals
+\usepackage{mathrsfs}
+\usepackage{cancel}
+% Bold math
+\usepackage{bm}
+% Some shortcuts
+\newcommand\N{\ensuremath{\mathbb{N}}}
+\newcommand\R{\ensuremath{\mathbb{R}}}
+\newcommand\Z{\ensuremath{\mathbb{Z}}}
+\renewcommand\O{\ensuremath{\emptyset}}
+\newcommand\Q{\ensuremath{\mathbb{Q}}}
+\newcommand\C{\ensuremath{\mathbb{C}}}
+\newcommand\K{\ensuremath{\mathbb{K}}}
+\newcommand\M{\ensuremath{\mathbb{M}}}
+\newcommand\p{\ensuremath{\mathbb{P}}}
+\newcommand{\eq}[2]{\mathrel{\operatorname*{=}_#1^#2}}
+\newcommand\inv[1]{#1\raisebox{1.15ex}{$\scriptscriptstyle-\!1$}}
+\newcommand\divides{\ensuremath{\bigm|}}
+\newcommand*{\everymodeprime}{\ensuremath{\prime}}
+% % Easily typeset systems of equations (French package)
+% \usepackage{systeme}
+
+% Put x \to \infty below \lim
+\let\svlim\lim\def\lim{\svlim\limits}
+
+%Make implies and impliedby shorter
+\let\implies\Rightarrow
+\let\impliedby\Leftarrow
+\let\iff\Leftrightarrow
+\let\epsilon\varepsilon
+
+% Add \contra symbol to denote contradiction
+\usepackage{stmaryrd} % for \lightning
+\newcommand\contra{\scalebox{1.5}{$\lightning$}}
+
+% Make left-brace and right-brace shorter
+\newcommand{\lbr}{\lbrace}
+\newcommand{\rbr}{\rbrace}
+
+%% From Abstract Algebra 
+\RequirePackage{bbm}
+\RequirePackage{lipsum}
+\RequirePackage{extarrows}
+\RequirePackage{makeidx}
+\RequirePackage{graphicx}
+\RequirePackage{subfiles}
+\RequirePackage{soul}
+\RequirePackage{comment}
+
+\newcommand{\ind}[1]{\index{#1}\textbf{#1}}
+\newcommand{\exercise}{Left as an exercise to the reader.}
+\newcommand{\pexercise}{\begin{proof}\exercise\end{proof}}
+
+%% brakcet macros
+\newcommand{\abra}[1]{\ensuremath{\left\langle#1\right\rangle}}
+\newcommand{\cbra}[1]{\left\{#1\right\}}
+\newcommand{\pbra}[1]{\left(#1\right)}
+\newcommand{\sbra}[1]{\ensuremath{\left[#1\right]}}
+\newcommand{\vbra}[1]{\ensuremath{\left\lvert #1 \right\rvert}}
+
+%% bb shortcuts
+\newcommand{\bbz}{\ensuremath{\mathbb{Z}}}
+\newcommand{\bbr}{\ensuremath{\mathbb{R}}}
+\newcommand{\bbc}{\ensuremath{\mathbb{C}}}
+\newcommand{\bbq}{\ensuremath{\mathbb{Q}}}
+\newcommand{\bbn}{\ensuremath{\mathbb{N}}}
+\newcommand{\bbf}{\ensuremath{\mathbb{F}}}
+
+%% style macros
+\newcommand{\sfrac}[2]{\,^{#1}\!/_{#2}}
+\newcommand{\barrow}{\ensuremath{\xrightarrow{\sim}}}
+\renewcommand{\underline}[1]{\ul{#1}}
+
+%% references
+\newcommand{\tref}[1]{Theorem \ref{#1}}
+\newcommand{\cref}[1]{Corollary \ref{#1}}
+\newcommand{\lref}[1]{Lemma \ref{#1}}
+\newcommand{\aref}[1]{Application \ref{#1}}
+\newcommand{\pref}[1]{Proposition \ref{#1}}
+\newcommand{\clref}[1]{Claim \ref{#1}}
+\newcommand{\fref}[1]{Figure \ref{fig:#1}}
+\newcommand{\eref}[1]{Example \ref{#1}}
+\newcommand{\dref}[1]{Definition \ref{#1}}
+\newcommand{\prref}[2]{Problem \ref{pr:#1}.\ref{pr:#1.#2}}
+
+% Complex Analysis Operators
+\newcommand{\im}[1]{\ensuremath{\operatorname{Im}(#1)}}
+\newcommand{\re}[1]{\ensuremath{\operatorname{Re}(#1)}}
+\renewcommand{\Arg}[1]{\ensuremath{\operatorname{Arg}#1}}
+\newcommand{\plog}[1]{\ensuremath{\operatorname{Log}#1}}
+
+% Statistics Operators
+\newcommand{\Ex}[1]{\ensuremath{\operatorname{E}\sbr{#1}}}
+\newcommand{\Var}[1]{\ensuremath{\operatorname{VAR}\sbr{#1}}}
+\newcommand{\GammaDist}[3]{\ensuremath{#1\sim\operatorname{Gamma}\del{#2, #3}}}
+\newcommand{\NormDist}[3]{\ensuremath{#1\sim\operatorname{Normal}\del{#2, #3}}}
+\newcommand{\ChiDist}[2]{\ensuremath{#1\sim\operatorname{X^2}\del{#2}}}
+
+% Algebra Operators
+\newcommand{\sign}[1]{\ensuremath{\operatorname{sgn}#1}}
+\newcommand{\image}[1]{\ensuremath{\operatorname{im}#1}}
+\newcommand{\aut}[1]{\ensuremath{\operatorname{Aut}(#1)}}
+\newcommand{\inn}[1]{\ensuremath{\operatorname{Inn}(#1)}}
+\newcommand{\End}[1]{\ensuremath{\operatorname{End}(#1)}}
+\newcommand{\tor}[1]{\ensuremath{\operatorname{Tor}(#1)}}
+\newcommand{\ann}[1]{\ensuremath{\operatorname{Ann}(#1)}}
+\newcommand{\gal}[1]{\ensuremath{\operatorname{Gal}()#1)}}
+\newcommand{\supp}[1]{\ensuremath{\operatorname{Supp}(#1)}}
+\newcommand{\stab}[1]{\ensuremath{\operatorname{Stab}(#1)}}
+
+% Linear Algebra Operators
+\newcommand{\tr}[1]{\ensuremath{\operatorname{tr}(#1)}}
+\newcommand{\rank}[1]{\ensuremath{\operatorname{rank}#1}}
+\newcommand{\Span}[1]{\ensuremath{\operatorname{span}#1}}
+\newcommand{\row}[1]{\ensuremath{\operatorname{row}#1}}
+\newcommand{\col}[1]{\ensuremath{\operatorname{col}#1}}
+\newcommand{\nul}[1]{\ensuremath{\operatorname{null}#1}}
+\newcommand{\nullity}[1]{\ensuremath{\operatorname{nullity}#1}}
+\newcommand{\proj}[1]{\ensuremath{\operatorname{proj}#1}}
+\newcommand{\dist}[1]{\ensuremath{\operatorname{d}(#1)}}
+
+% Calculus Operators
+\newcommand{\dom}[1]{\ensuremath{\operatorname{dom}#1}}
+\newcommand{\lub}[1]{\ensuremath{\operatorname{lub}\del{#1}}}
+\newcommand{\bvec}[1]{\mathbf{#1}}
+\newcommand{\bhat}[1]{\mathbf{\hat{#1}}}
+\DeclareMathOperator{\curve}{\mathscr{C}}
+\DeclareMathOperator{\Lagr}{\mathcal{L}}
+\DeclareMathOperator{\Lapl}{\mathcal{L}}
+\DeclareMathOperator{\hess}{\bm{\mathscr{H}}}
+
+%% algebra macros
+\newcommand{\map}[3]{\ensuremath{{#1 : #2 \rightarrow #3}}}
+\newcommand{\xmap}[3]{\ensuremath{{#2 \xrightarrow{#1} #3}}}
+\newcommand{\qgrp}[2]{{\sfrac{#1}{#2}}}
+\newcommand{\GZmod}[1][n]{\sfrac{\bbz}{#1\bbz}}
+\newcommand{\pGZmod}[1][n]{\pbra{\GZmod[#1]}}
+\DeclareMathOperator{\Char}{Char}
+\DeclareMathOperator{\ev}{ev}
+\DeclarePairedDelimiter\card{\lvert}{\rvert}%
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\degree}{degree}
+\newcommand{\poly}[2]{\ensuremath{\mathcal{P}\pbra{#1, #2}}}
+\newcommand{\id}[1][]{\ensuremath{\iota_{#1}}}
+\newcommand{\ida}[1][]{\ensuremath{\id[#1]^{+}}}
+\newcommand{\idm}[1][]{\ensuremath{\id[#1]^{*}}}
+\newcommand{\divs}[2]{\ensuremath{#1 \divides #2 }}
+\newcommand{\order}[1]{\ensuremath{o(#1)}}
+\newcommand{\Oind}[2]{\ensuremath{\vbra{ #1:#2}}}
+\newcommand{\psign}[1]{\ensuremath{\textrm{sign}\pbra{#1}}}
+\newcommand{\ngrp}{\ensuremath{\trianglelefteq}}
+\newcommand{\ngrpeq}{\ensuremath{\trianglelefteq}}
+\newcommand{\cset}[2]{\ensuremath{\cbra{#1\ \middle |\ #2}}}
+\renewcommand{\st}{\ensuremath{\text{ such that }}}
+\newcommand{\gen}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\normal}[2]{#1\trianglelefteq #2}
+\newcommand{\seq}[2]{\ensuremath{#1_1, #1_2, \ldots , #1_{#2}}}
+\newcommand{\sequence}[3]{\ensuremath{#1_1 #2 #1_2 #2 \ldots #2 #1_{#3}}}
+\newcommand{\infseq}[2]{\ensuremath{#1_1 #2 #1_2 #2 \ldots}}
+\newcommand{\sseq}[4]{\ensuremath{#1_1,\, #1_2,\, \ldots ,\, #1_{#2}}}
+\newcommand{\mseq}[3]{\ensuremath{#1_{1}#2_{1},\, #1_{2}#2_{2},\, \ldots ,\, #1_{#3}#2_{#3}}}
+\newcommand{\amser}[3]{\ensuremath{#1_{1}#2_{1}+#1_{2}#2_{2}+\ldots +#1_{#3}#2_{#3}}}
+\newcommand{\samser}[3]{\ensuremath{#1_0+#1_{1}#2+\ldots +#1_{#3}#2^{#3}}}
+
+\newcommand{\GL}[2][n]{\ensuremath{\mathcal{GL}_{#1}}\pbra{#2}}
+\newcommand{\SL}[2][n]{\ensuremath{\mathcal{SL}_{#1}}\pbra{#2}}
+\newcommand{\mset}[1][m \times n]{\ensuremath{\mathcal{M}_{#1}}}
+\newcommand{\sqmset}[1][n]{\ensuremath{\mset[#1 \times #1]}}
+
+\newcommand{\dfwd}{$\Rightarrow$\ }
+\newcommand{\drev}{$\Leftarrow$\ }
+
+\newcommand{\lcsr}[2]{\ensuremath{{}_{#1}{#2}}}
+\newcommand{\rcsr}[2]{\ensuremath{{#2}_{#1}}}
+
+\newcommand{\oddP}[1][n]{\ensuremath{\textrm{Odd}_{#1}}}
+\newcommand{\evenP}[1][n]{\ensuremath{\textrm{Even}_{#1}}}
+
+\newcommand{\bmat}[1]{\ensuremath{\begin{bmatrix}#1\end{bmatrix}}}
+\newcommand{\vmat}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\newcommand{\pmat}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+
+% Extends matrix environments to give it functionality to become an augmented 
+% matrix. Usage:
+% \begin{bmatrix}[cc|c]
+%   a & c & d \\
+%   d & e & f
+% \end{bmatrix}
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\newcommand{\renewcounters}{
+    \setcounter{definition}{0}\setcounter{lemma}{0}\setcounter{theorem}{0}\setcounter{corollary}{0}\setcounter{prop}{0}
+}
+
+% Log style
+\Style{LogParen=p}
+\Style{DDisplayFunc=inset,DShorten=true}
+
+% Evaluated from a to b
+\newcommand*\Eval[3]{\left.#1\right\rvert_{#2}^{#3}}
+
+% horizontal rule
+\newcommand\hr{
+    \noindent\rule[0.5ex]{\linewidth}{0.5pt}
+}
+
+% hide parts
+\newcommand\hide[1]{}
+
+% si unitx
+\usepackage{siunitx}
+\sisetup{locale = FR}
+
+% Environments
+\makeatother
+% For box around Definition, Theorem, \ldots
+\usepackage{mdframed}
+\mdfsetup{skipabove=1em,skipbelow=0em}
+\theoremstyle{definition}
+\newtheorem*{eg}{Example}
+\newtheorem{counterexample}{Counterexample}[section]
+\newtheorem*{notation}{Notation}
+\newtheorem*{previouslyseen}{As previously seen}
+\newtheorem*{remark}{Remark}
+\newtheorem*{note}{Note}
+\newtheorem*{claim}{Claim}
+\newtheorem{application}{Application}[section]
+\newtheorem*{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{rul}{Rule}
+\newtheorem*{observe}{Observe}
+\newtheorem*{property}{Properties}
+\newtheorem*{intuition}{Intuition}
+\newmdtheoremenv[nobreak=true]{definition}{Definition}
+\newmdtheoremenv[nobreak=true]{prop}{Proposition}
+\newmdtheoremenv[nobreak=true]{properties}{Properties}
+\newmdtheoremenv[nobreak=true]{theorem}{Theorem}
+\newmdtheoremenv[nobreak=true]{corollary}{Corollary}
+\newmdtheoremenv[nobreak=true]{consequence}{Consequence}
+\newmdtheoremenv[nobreak=true]{lemma}{Lemma}
+
+\newtheorem*{examplex}{Example}
+\newenvironment{example}
+  {\pushQED{\qed}\renewcommand{\qedsymbol}{$\triangle$}\examplex}
+  {\popQED\endexamplex}
+
+% End example and intermezzo environments with a small diamond (just like proof
+% environments end with a small square)
+\usepackage{etoolbox}
+\AtEndEnvironment{vb}{\null\hfill$\diamond$}%
+\AtEndEnvironment{intermezzo}{\null\hfill$\diamond$}%
+% \AtEndEnvironment{opmerking}{\null\hfill$\diamond$}%
+
+
+
+% % Fix some spacing
+% % http://tex.stackexchange.com/questions/22119/how-can-i-change-the-spacing-before-theorems-with-amsthm
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=\parskip \thm@postskip=0pt
+}
+
+\usepackage{xifthen}
+\def\testdateparts#1{\dateparts#1\relax}
+\def\dateparts#1 #2 #3 #4 #5\relax{
+    \marginpar{\small\textsf{\mbox{#1 #2 #3 #5}}}
+}
+
+%fakesection
+\newcommand{\fakesection}[1]{%
+  \par\refstepcounter{section}% Increase section counter
+  \sectionmark{#1}% Add section mark (header)
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}% Add section to ToC
+  % Add more content here, if needed.
+}
+%fakesubsection
+\newcommand{\fakesubsection}[1]{%
+  \par\refstepcounter{subsection}% Increase subsection counter
+  \subsectionmark{#1}% Add subsection mark (header)
+  \addcontentsline{toc}{subsection}{\protect\numberline{\thesubsection}#1}% Add subsection to ToC
+  % Add more content here, if needed.
+}
+
+%lecture macro
+\def\@lecture{}%
+\newcommand{\lecture}[3]{
+    \ifthenelse{\isempty{#3}}{%
+        \def\@lecture{Lecture #1}%
+    }{%
+        \def\@lecture{Lecture #1: #3}%
+    }%
+    \subsection*{\@lecture}
+    \marginpar{\small\textsf{\mbox{#2}}}
+}
+
+% % These are the fancy headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% LE: left even
+% RO: right odd
+% CE, CO: center even, center odd
+
+\fancyhead[RO,LE]{\@lecture} % Right odd,  Left even
+\fancyhead[RE,LO]{}          % Right even, Left odd
+
+\fancyfoot[RO,LE]{\thepage}  % Right odd,  Left even
+\fancyfoot[RE,LO]{}          % Right even, Left odd
+\fancyfoot[C]{\leftmark}     % Center
+
+\makeatother
+
+% Todonotes and inline notes in fancy boxes
+\usepackage{todonotes}
+\usepackage{tcolorbox}
+
+% Make boxes breakable
+\tcbuselibrary{breakable}
+
+% Figure support as explained in my blog post.
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+% Fix some stuff
+% %http://tex.stackexchange.com/questions/76273/multiple-pdfs-with-page-group-included-in-a-single-page-warning
+\pdfsuppresswarningpagegroup=1
+
+\makeindex[intoc]
+
+% Hyperlink and bookmark setup
+%\hypersetup{
+%    colorlinks=true,
+%    linkcolor=blue,
+%    filecolor=magenta,
+%    urlcolor=cyan,
+%    pdftitle={Complex Analysis Lecture Notes},
+%    bookmarks=true,
+%    pdfstartview=
+%}
+%\bookmarksetup{
+%  numbered,
+%  open
+%}
+
+% My name
+\author{Daniel Contreras \\ 10080311}
