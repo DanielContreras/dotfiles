@@ -76,3 +76,7 @@ map("v", ">", ">gv", opts)
 map("v", "<A-k>", ":m .-2<CR>==", opts)
 map("v", "<A-j>", ":m .+1<CR>==", opts)
 map("v", "p", '"_dP', opts)
+
+-- toggleterm keybinds
+map("n", "<leader>l", ":lua _LAZYGIT_TOGGLE()<CR>", opts)
+map("n", "<leader>n", ":lua _NCDU_TOGGLE()<CR>", opts)
