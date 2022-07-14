@@ -191,6 +191,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'airblade/vim-gitgutter' " shows a 'gutter' of diff changes
   Plug 'junegunn/fzf.vim' " fuzzy finding
   Plug 'sheerun/vim-polyglot' " Better syntax highlighting
+  Plug 'lervag/vimtex' " vim syntax highlighting and more 
   call plug#end()
 endif
 
