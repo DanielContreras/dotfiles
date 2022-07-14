@@ -21,7 +21,6 @@ return require("packer").startup(function()
 	use("fladson/vim-kitty") -- kitty syntax highlighting
 	use("lukas-reineke/indent-blankline.nvim") -- Visual indentation markers
 	use("akinsho/toggleterm.nvim") -- toggle terminal inside nvim session
-	use("folke/tokyonight.nvim")
 
 	--> telescope plugins
 	use("nvim-telescope/telescope.nvim") -- Find, Filter, Preview, Pick
@@ -47,15 +46,6 @@ return require("packer").startup(function()
 	use("p00f/nvim-ts-rainbow")
 
 	--> Latex plugins
+	-- vimtex slow startup
 	use("lervag/vimtex") -- syntax plugin for latex files
-
-	--> Markdown plugins
-	use({
-		"iamcco/markdown-preview.nvim",
-		run = "cd app && npm install",
-		setup = function()
-			vim.g.mkdp_filetypes = { "markdown" }
-		end,
-		ft = { "markdown" },
-	})
 end)

@@ -14,7 +14,7 @@ set.smartcase = true -- yes
 
 set.splitbelow = true -- force a horizontal split to go below
 set.splitright = true -- force a vertical split to go to the right
-set.wrap = false -- turn of code wrapping
+set.wrap = true -- turn of code wrapping
 set.scrolloff = 8 -- yes
 set.fileencoding = "utf-8" -- file encoding
 set.termguicolors = true -- provide full color support for terminals that support it
@@ -37,3 +37,6 @@ set.hidden = true -- yes
 vim.cmd([[set iskeyword+=-]]) -- treats - as a keyword, so if you dw select-all, it'll delete the entire word
 
 vim.laststatus = 3 -- Set global statusline
+
+vim.opt.list = true
+vim.opt.listchars:append("eol:↴")
