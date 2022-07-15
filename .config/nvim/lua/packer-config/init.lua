@@ -48,4 +48,15 @@ return require("packer").startup(function()
 	--> Latex plugins
 	-- vimtex slow startup
 	use("lervag/vimtex") -- syntax plugin for latex files
+
+	--> Markdown plugins
+	use("vimwiki/vimwiki") -- markdown stuff
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	})
 end)
