@@ -41,10 +41,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \graphicspath{{./figures/}}
-%\tolerance=1
-%\emergencystretch=\maxdimen
-%\hyphenpenalty=10000
-%\hbadness=10000
 
 % Don't indent paragraphs, leave some space between them
 \usepackage{parskip}
@@ -259,12 +255,6 @@
 \newcommand{\vmat}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
 \newcommand{\pmat}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
 
-% Extends matrix environments to give it functionality to become an augmented 
-% matrix. Usage:
-% \begin{bmatrix}[cc|c]
-%   a & c & d \\
-%   d & e & f
-% \end{bmatrix}
 \makeatletter
 \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
   \hskip -\arraycolsep
@@ -282,18 +272,6 @@
 
 % Evaluated from a to b
 \newcommand*\Eval[3]{\left.#1\right\rvert_{#2}^{#3}}
-
-% horizontal rule
-\newcommand\hr{
-    \noindent\rule[0.5ex]{\linewidth}{0.5pt}
-}
-
-% hide parts
-\newcommand\hide[1]{}
-
-% si unitx
-\usepackage{siunitx}
-\sisetup{locale = FR}
 
 % Environments
 \makeatother
@@ -327,14 +305,6 @@
 \newenvironment{example}
   {\pushQED{\qed}\renewcommand{\qedsymbol}{$\triangle$}\examplex}
   {\popQED\endexamplex}
-
-% End example and intermezzo environments with a small diamond (just like proof
-% environments end with a small square)
-\usepackage{etoolbox}
-\AtEndEnvironment{vb}{\null\hfill$\diamond$}%
-\AtEndEnvironment{intermezzo}{\null\hfill$\diamond$}%
-% \AtEndEnvironment{opmerking}{\null\hfill$\diamond$}%
-
 
 % % Fix some spacing
 % % http://tex.stackexchange.com/questions/22119/how-can-i-change-the-spacing-before-theorems-with-amsthm
