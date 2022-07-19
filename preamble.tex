@@ -15,6 +15,7 @@
 \usepackage{pgfplots}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{xparse}
 
 %%%%%%%%%%%%%%% source code %%%%%%%%%%%%%%%%%%%%%%%%
 \definecolor{dkgreen}{rgb}{0,0.6,0}
@@ -140,35 +141,38 @@
 \newcommand{\dref}[1]{Definition \ref{#1}}
 \newcommand{\prref}[2]{Problem \ref{pr:#1}.\ref{pr:#1.#2}}
 
+% Basic math Operators
+\NewDocumentCommand{\pwr}{m}{^{#1}}
+
 % Complex Analysis Operators
 \newcommand{\im}[1]{\ensuremath{\operatorname{Im}(#1)}}
 \newcommand{\re}[1]{\ensuremath{\operatorname{Re}(#1)}}
 \renewcommand{\Arg}[1]{\ensuremath{\operatorname{Arg}#1}}
 \newcommand{\plog}[1]{\ensuremath{\operatorname{Log}#1}}
 
-% Statistics Operators
+% Statistics Operators 
 \newcommand{\Ex}[1]{\ensuremath{\operatorname{E}\sbr{#1}}}
 \newcommand{\Var}[1]{\ensuremath{\operatorname{Var}\sbr{#1}}}
 \newcommand{\Std}[1]{\ensuremath{\operatorname{Std}\sbr{#1}}}
 \newcommand{\Skew}[1]{\ensuremath{\operatorname{Skew}\sbr{#1}}}
 \newcommand{\Kurt}[1]{\ensuremath{\operatorname{Kurt}\sbr{#1}}}
-\newcommand{\Cor}[2]{\ensuremath{\operatorname{Corr}\del{#1,#2}}}
-\newcommand{\Cov}[2]{\ensuremath{\operatorname{Cov}\del{#1,#2}}}
-\newcommand{\Bias}[2]{\ensuremath{\operatorname{Bias}\del{#1,#2}}}
-\newcommand{\GammaDist}[3]{\ensuremath{#1\sim\operatorname{Gamma}\del{#2,#3}}}
-\newcommand{\NormDist}[3]{\ensuremath{#1\sim\operatorname{Normal}\del{#2,#3}}}
-\newcommand{\BinDist}[3]{\ensuremath{#1\sim\operatorname{Binomial}\del{#2,#3}}}
-\newcommand{\BetaDist}[3]{\ensuremath{#1\sim\operatorname{Beta}\del{#2,#3}}}
-\newcommand{\UniDist}[3]{\ensuremath{#1\sim\operatorname{Uniform}\del{#2,#3}}}
+\newcommand{\Cor}[1]{\ensuremath{\operatorname{Corr}\del{#1}}}
+\newcommand{\Cov}[1]{\ensuremath{\operatorname{Cov}\del{#1}}}
+\newcommand{\Bias}[1]{\ensuremath{\operatorname{Bias}\del{#1}}}
+\newcommand{\GammaDist}[2]{\ensuremath{#1\sim\operatorname{Gamma}\del{#2}}}
+\newcommand{\NormDist}[2]{\ensuremath{#1\sim\operatorname{Normal}\del{#2}}}
+\newcommand{\BinDist}[2]{\ensuremath{#1\sim\operatorname{Binomial}\del{#2}}}
+\newcommand{\BetaDist}[2]{\ensuremath{#1\sim\operatorname{Beta}\del{#2}}}
+\newcommand{\UniDist}[2]{\ensuremath{#1\sim\operatorname{Uniform}\del{#2}}}
 \newcommand{\ChiDist}[2]{\ensuremath{#1\sim\operatorname{\chi}^2\del{#2}}}
 \newcommand{\TDist}[2]{\ensuremath{#1\sim\operatorname{T}\del{#2}}}
-\newcommand{\FDist}[3]{\ensuremath{#1\sim\operatorname{F}\del{#2,#3}}}
+\newcommand{\FDist}[2]{\ensuremath{#1\sim\operatorname{F}\del{#2}}}
 \newcommand{\BerDist}[2]{\ensuremath{#1\sim\operatorname{Bernoulli}\del{#2}}}
 \newcommand{\GeoDist}[2]{\ensuremath{#1\sim\operatorname{Geometric}\del{#2}}}
 \newcommand{\PoiDist}[2]{\ensuremath{#1\sim\operatorname{Poisson}\del{#2}}}
 \newcommand{\ExpDist}[2]{\ensuremath{#1\sim\operatorname{Exponential}\del{#2}}}
 \newcommand{\T}[1]{\ensuremath{\operatorname{T}_{#1}}}
-\newcommand{\F}[2]{\ensuremath{\operatorname{F}_{#1,#2}}}
+\newcommand{\F}[1]{\ensuremath{\operatorname{F}_{#1}}}
 \newcommand{\X}[1]{\ensuremath{\operatorname{\chi}^2_{#1}}}
 
 % Algebra Operators
