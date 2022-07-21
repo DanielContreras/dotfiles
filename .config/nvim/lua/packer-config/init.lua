@@ -21,7 +21,6 @@ return require("packer").startup(function()
 	use("fladson/vim-kitty") -- kitty syntax highlighting
 	use("lukas-reineke/indent-blankline.nvim") -- Visual indentation markers
 	use("akinsho/toggleterm.nvim") -- toggle terminal inside nvim session
-	-- use("embear/vim-uncrustify")
 
 	--> telescope plugins
 	use("nvim-telescope/telescope.nvim") -- Find, Filter, Preview, Pick
