@@ -21,6 +21,7 @@ return require("packer").startup(function()
 	use("fladson/vim-kitty") -- kitty syntax highlighting
 	use("lukas-reineke/indent-blankline.nvim") -- Visual indentation markers
 	use("akinsho/toggleterm.nvim") -- toggle terminal inside nvim session
+	-- use("embear/vim-uncrustify")
 
 	--> telescope plugins
 	use("nvim-telescope/telescope.nvim") -- Find, Filter, Preview, Pick
@@ -35,10 +36,9 @@ return require("packer").startup(function()
 	use("hrsh7th/cmp-cmdline") -- Autocompletion plugin
 	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
 	use("saadparwaiz1/cmp_luasnip") -- Snippets source for nvim-cmp
-	use("p00f/clangd_extensions.nvim") -- clangd LSP extensions
 	use("L3MON4D3/LuaSnip") -- Snippets plugin
 	use("onsails/lspkind.nvim") -- inject lsp diagnostics, formatting, code actions
-	use("jose-elias-alvarez/null-ls.nvim")
+	use("jose-elias-alvarez/null-ls.nvim") -- diagnostics, formatting, code actions, etc
 
 	--> treesitter & treesitter modules
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })

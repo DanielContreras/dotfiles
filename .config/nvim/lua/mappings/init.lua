@@ -80,3 +80,6 @@ map("v", "p", '"_dP', opts)
 -- toggleterm keybinds
 map("n", "<leader>l", ":lua _LAZYGIT_TOGGLE()<CR>", opts)
 map("n", "<leader>n", ":lua _NCDU_TOGGLE()<CR>", opts)
+
+-- null-ls
+map("n", "<leader>fm", ":lua vim.lsp.buf.formatting()<CR>", opts)
