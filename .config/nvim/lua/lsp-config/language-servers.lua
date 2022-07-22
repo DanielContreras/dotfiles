@@ -79,7 +79,7 @@ require("lspconfig")["rust_analyzer"].setup({
 
 -- Remove virtual text errors
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	virtual_text = true,
+	virtual_text = false,
 	underline = true,
 	signs = true,
 })

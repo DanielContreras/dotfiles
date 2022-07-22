@@ -4,8 +4,8 @@ vim.notify = require("notify")
 
 set.expandtab = true -- convert tabs to spaces
 set.smarttab = true --
-set.shiftwidth = 4 -- the number of spaces inserted for each indentation
-set.tabstop = 4 -- the number of spaces for a tab
+set.shiftwidth = 2 -- the number of spaces inserted for each indentation
+set.tabstop = 2 -- the number of spaces for a tab
 
 set.hlsearch = true -- highlight all matches on previous search pattern
 set.incsearch = true -- incrementally jump to item being searched

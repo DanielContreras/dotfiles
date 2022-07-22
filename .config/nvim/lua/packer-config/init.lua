@@ -19,7 +19,6 @@ return require("packer").startup(function()
 	use("romgrk/barbar.nvim") -- Add buffers to the top of the editor
 	use("nvim-lua/plenary.nvim") -- telescope dependancy
 	use("fladson/vim-kitty") -- kitty syntax highlighting
-	use("lukas-reineke/indent-blankline.nvim") -- Visual indentation markers
 	use("akinsho/toggleterm.nvim") -- toggle terminal inside nvim session
 
 	--> telescope plugins

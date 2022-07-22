@@ -81,5 +81,6 @@ map("v", "p", '"_dP', opts)
 map("n", "<leader>l", ":lua _LAZYGIT_TOGGLE()<CR>", opts)
 map("n", "<leader>n", ":lua _NCDU_TOGGLE()<CR>", opts)
 
--- null-ls
+-- LSP bindings
 map("n", "<leader>fm", ":lua vim.lsp.buf.formatting()<CR>", opts)
+map("n", "<leader>td", ":lua vim.diagnostic.open_float()<CR>", opts)
