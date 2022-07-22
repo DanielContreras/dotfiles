@@ -8,7 +8,6 @@ require("barbar-config")
 require("treesitter-config")
 require("comment-config")
 require("telescope-config")
-require("blankline-config")
 require("toggleterm-config")
 
 --> lsp modules
