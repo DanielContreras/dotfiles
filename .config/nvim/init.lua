@@ -9,6 +9,7 @@ require("treesitter-config")
 require("comment-config")
 require("telescope-config")
 require("toggleterm-config")
+require("toggleterm-config")
 
 --> lsp modules
 require("lsp-config.language-servers")
@@ -16,3 +17,4 @@ require("lsp-config.nvim-cmp")
 require("lsp-config.null-ls")
 require("lsp-config.autopairs")
 require("lsp-config.lsp-installer")
+require("lsp-config.clang")

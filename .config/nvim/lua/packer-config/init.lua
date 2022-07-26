@@ -20,6 +20,7 @@ return require("packer").startup(function()
 	use("nvim-lua/plenary.nvim") -- telescope dependancy
 	use("fladson/vim-kitty") -- kitty syntax highlighting
 	use("akinsho/toggleterm.nvim") -- toggle terminal inside nvim session
+  use("p00f/clangd_extensions.nvim") -- clangd_extensions
 
 	--> telescope plugins
 	use("nvim-telescope/telescope.nvim") -- Find, Filter, Preview, Pick
