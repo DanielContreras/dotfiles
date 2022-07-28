@@ -113,6 +113,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Set default text editor to neovim
+export EDITOR='nvim'
+
 alias clean='sudo pacman -Rns $(pacman -Qtdq)' # remove orphans
 alias clean-cache='rm -rf ~/.cache/*' # remove cache from home 
 alias pac-update='sudo pacman -Syyu' # update packages 
