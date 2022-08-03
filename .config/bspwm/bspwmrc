@@ -12,11 +12,6 @@ then
     blueberry-tray &
 fi
 
-if ! pgrep -x "redshift-gtk" > /dev/null
-then
-    redshift-gtk &
-fi
-
 if ! pgrep -x "sxhkd" > /dev/null
 then
     sxhkd &
