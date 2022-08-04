@@ -17,6 +17,11 @@ then
     sxhkd &
 fi
 
+if ! pgrep -x "redshift-gtk" > /dev/null
+then
+    redshift-gtk &
+fi
+
 if ! pgrep -x "dropbox" > /dev/null
 then
     dropbox &
