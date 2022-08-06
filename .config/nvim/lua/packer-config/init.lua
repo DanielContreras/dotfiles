@@ -21,6 +21,8 @@ return require("packer").startup(function()
 	use("fladson/vim-kitty") -- kitty syntax highlighting
 	use("akinsho/toggleterm.nvim") -- toggle terminal inside nvim session
   use("p00f/clangd_extensions.nvim") -- clangd_extensions
+  use("lewis6991/gitsigns.nvim") -- git signs (seems to cause some errors)
+  use("kylechui/nvim-surround") -- vim surround
 
 	--> telescope plugins
 	use("nvim-telescope/telescope.nvim") -- Find, Filter, Preview, Pick

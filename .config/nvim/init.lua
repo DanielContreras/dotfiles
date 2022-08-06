@@ -9,7 +9,8 @@ require("treesitter-config")
 require("comment-config")
 require("telescope-config")
 require("toggleterm-config")
-require("toggleterm-config")
+require("git-signs")
+require("surround")
 
 --> lsp modules
 require("lsp-config.language-servers")
