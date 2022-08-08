@@ -11,6 +11,7 @@ require("telescope-config")
 require("toggleterm-config")
 require("git-signs")
 require("surround")
+require("indent")
 
 --> lsp modules
 require("lsp-config.language-servers")

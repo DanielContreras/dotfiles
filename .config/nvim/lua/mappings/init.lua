@@ -4,7 +4,9 @@ local opts = { noremap = true, silent = true }
 map("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
--- Normal
+--> Normal 
+
+map("n", "<C-e>", ":nohl<CR>", opts)
 
 -- Nvim Tree
 map("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
@@ -67,18 +69,23 @@ map("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 -- Markdown Glow mapping
 vim.keymap.set("n", "<bs>", ":edit #<cr>", { silent = true })
 
--- Visual Mode
+--> Visual Mode
+
 -- Stay in indent mode
 map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
 
--- Move text up and down
-map("v", "<A-k>", ":m .-2<CR>==", opts)
-map("v", "<A-j>", ":m .+1<CR>==", opts)
+-- Move blocks of code up and down
+map("n", "<A-j>", ":m .+1<CR>==", opts)
+map("n", "<A-k>", ":m .-2<CR>==", opts)
+map("i", "<A-j>", ":m .+1<CR>==gi", opts)
+map("i", "<A-k>", ":m .-2<CR>==gi", opts)
+map("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
+map("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 map("v", "p", '"_dP', opts)
 
 -- toggleterm keybinds
-map("n", "<leader>l", ":lua _LAZYGIT_TOGGLE()<CR>", opts)
+-- map("n", "<leader>l", ":lua _LAZYGIT_TOGGLE()<CR>", opts)
 map("n", "<leader>n", ":lua _NCDU_TOGGLE()<CR>", opts)
 
 -- LSP bindings
@@ -95,4 +102,3 @@ map("n", "<space>D", ":lua vim.lsp.buf.type_definition()<CR>", opts)
 map("n", "<space>rn", ":lua vim.lsp.buf.rename()<CR>", opts)
 map("n", "<space>ca", ":lua vim.lsp.buf.code_action()<CR>", opts)
 map("n", "gr", ":lua vim.lsp.buf.references()<CR>", opts)
-map("n", "<leader>lf", ":lua vim.lsp.buf.formatting()<CR>", opts)

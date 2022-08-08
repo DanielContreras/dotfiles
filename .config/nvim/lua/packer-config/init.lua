@@ -20,12 +20,22 @@ return require("packer").startup(function()
 	use("nvim-lua/plenary.nvim") -- telescope dependancy
 	use("fladson/vim-kitty") -- kitty syntax highlighting
 	use("akinsho/toggleterm.nvim") -- toggle terminal inside nvim session
-  use("p00f/clangd_extensions.nvim") -- clangd_extensions
-  use("lewis6991/gitsigns.nvim") -- git signs (seems to cause some errors)
-  use("kylechui/nvim-surround") -- vim surround
+	use("p00f/clangd_extensions.nvim") -- clangd_extensions
+	use("lewis6991/gitsigns.nvim") -- git signs (seems to cause some errors)
+	use("kylechui/nvim-surround") -- vim surround
+	use("lukas-reineke/indent-blankline.nvim") -- indent lines
+
+	--> Motion plugins
+	use("tpope/vim-repeat") -- plugin support for . command
+	use("ggandor/lightspeed.nvim") -- Motion plugin for better navigation
 
 	--> telescope plugins
 	use("nvim-telescope/telescope.nvim") -- Find, Filter, Preview, Pick
+	-- Faster zfz finding with telescope
+	use({
+		"nvim-telescope/telescope-fzf-native.nvim",
+		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	})
 
 	--> LSP plugins
 	use("neovim/nvim-lspconfig") -- enables lsp
