@@ -160,7 +160,7 @@ XF86AudioPrev
 
 # Screenshot Area
 Print
-	$HOME/.scripts/screenshot --area-cb
+  flameshot gui	
 
 # Screenshot Full
 shift + Print
