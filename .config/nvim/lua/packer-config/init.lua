@@ -10,6 +10,7 @@ return require("packer").startup(function()
 	use("wbthomason/packer.nvim") -- have packer manage itself
 	use("nvim-lua/popup.nvim") -- dependancy for something?
 	use("EdenEast/nightfox.nvim") -- color theme
+	use("folke/tokyonight.nvim") -- tokyonight theme
 	use("kyazdani42/nvim-web-devicons") -- icons
 	use("kyazdani42/nvim-tree.lua") -- folder tree
 	use("nvim-lualine/lualine.nvim") -- status line
@@ -55,6 +56,7 @@ return require("packer").startup(function()
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/nvim-treesitter-refactor")
 	use("nvim-treesitter/nvim-treesitter-textobjects") -- Need to set up
+	use("lewis6991/spellsitter.nvim") -- spell check improved to work with treesitter
 	use("p00f/nvim-ts-rainbow")
 
 	--> Latex plugins

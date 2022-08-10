@@ -7,6 +7,7 @@ vim.g.mapleader = " "
 --> Normal 
 
 map("n", "<C-e>", ":nohl<CR>", opts)
+map("n", "<F2>", ":set spell!<CR>", opts)
 
 -- Nvim Tree
 map("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
@@ -90,7 +91,7 @@ map("n", "<leader>n", ":lua _NCDU_TOGGLE()<CR>", opts)
 
 -- LSP bindings
 map("n", "<leader>fm", ":lua vim.lsp.buf.formatting()<CR>", opts)
-map("n", "<leader>td", ":lua vim.diagnostic.open_float()<CR>", opts)
+map("n", "<leader>of", ":lua vim.diagnostic.open_float()<CR>", opts)
 map("n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
 map("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opts)
 map("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
