@@ -138,11 +138,11 @@ set wrapscan
 " arbitrary raw text files.
 
 set fo-=t   " don't auto-wrap text using text width
-set fo+=c   " autowrap comments using textwidth with leader
+set fo+=c   " auto wrap comments using text width with leader
 set fo-=r   " don't auto-insert comment leader on enter in insert
 set fo-=o   " don't auto-insert comment leader on o/O in normal
 set fo+=q   " allow formatting of comments with gq
-set fo-=w   " don't use trailing whitespace for paragraphs
+set fo-=w   " don't use trailing white space for paragraphs
 set fo-=a   " disable auto-formatting of paragraph changes
 set fo-=n   " don't recognized numbered lists
 set fo+=j   " delete comment prefix when joining
@@ -177,7 +177,7 @@ filetype plugin on
 " dunno
 set cinoptions+=:0
 
-" Edit/Reload vimr configuration file
+" Edit/Reload vimrc configuration file
 nnoremap confe :e $HOME/.vimrc<CR>
 nnoremap confr :source $HOME/.vimrc<CR>
 
@@ -185,7 +185,7 @@ nnoremap confr :source $HOME/.vimrc<CR>
 if filereadable(expand("~/.vim/autoload/plug.vim"))
   call plug#begin('~/.local/share/vim/plugins')
   Plug 'tpope/vim-fugitive' " Git stuff
-  Plug 'tpope/vim-surround' " Surround text objects with delimeters
+  Plug 'tpope/vim-surround' " Surround text objects with delimiters
   Plug 'tpope/vim-repeat' " Fixes dot repeat functionality on some plugins
   Plug 'morhetz/gruvbox' " gruvbox colorscheme
   Plug 'EdenEast/nightfox.nvim' " neovim nightfox colorscheme
@@ -194,12 +194,10 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'junegunn/fzf.vim'
   Plug 'preservim/nerdtree' " Tree drawer
   Plug 'ryanoasis/vim-devicons' " Icons 
-  Plug 'vim-airline/vim-airline' " Status bar
-  Plug 'vim-airline/vim-airline-themes' " Status bar themes
-  Plug 'tpope/vim-commentary' " gcc sttyle commenting
-  Plug 'jiangmiao/auto-pairs' " Auto pair paranthesis, quotations, etc
+  Plug 'itchyny/lightline.vim' " light weight but extensible statusline
+  Plug 'tpope/vim-commentary' " gcc style commenting
+  Plug 'jiangmiao/auto-pairs' " Auto pair parenthesis, quotations, etc
   Plug 'vim-scripts/AutoComplPop' " Automatically show vim's built in completion
-  " Not neccessary to have plugins
   Plug 'Yggdroot/indentLine' " Indent rules
   Plug 'airblade/vim-gitgutter' " shows a 'gutter' of diff changes
   Plug 'sheerun/vim-polyglot' " Better syntax highlighting
@@ -210,11 +208,21 @@ endif
 set t_Co=256
 set background=dark
 let g:gruvbox_termcolors = 256
-colorscheme nord
+colorscheme nordfox
 
-" Set airline theme
-let g:airline_powerline_fonts = 1
-" let g:airline_theme='nord'
+" Set lightline configuration
+set laststatus=2
+set noshowmode " this disables -- INSERT -- since it's on our status bar
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
 
 " vim-devicons
 set encoding=UTF-8
@@ -222,7 +230,7 @@ set encoding=UTF-8
 " vim indentline configuration
 let g:indentLine_char_list = ['▏']
 
-" make Y consitent with D and C (yank til end)
+" make Y consistent with D and C (yank til end)
 map Y y$
 
 " better command-line completion
@@ -296,10 +304,11 @@ nnoremap <leader>fg :Rg <CR>
 
 " nerdtree
 nnoremap <leader>e :NERDTreeToggle<CR>
+:set ma
 
 " Move blocks of code
 nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
+nnoremap <A-k> :m .3<CR>==
 inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
