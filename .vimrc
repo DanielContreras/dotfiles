@@ -28,6 +28,12 @@ if &term =~ '^xterm'
     let &t_SI .= "\<Esc>[6 q"
 endif
 
+" tmux Compatible
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 "####################### Vi Compatible (~/.exrc) #######################
 
@@ -175,28 +181,46 @@ set cinoptions+=:0
 nnoremap confe :e $HOME/.vimrc<CR>
 nnoremap confr :source $HOME/.vimrc<CR>
 
-" statusline
-set ruf=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
-
 " only load plugins if Plug detected
 if filereadable(expand("~/.vim/autoload/plug.vim"))
   call plug#begin('~/.local/share/vim/plugins')
   Plug 'tpope/vim-fugitive' " Git stuff
-  Plug 'EdenEast/nightfox.nvim' " colorscheme
+  Plug 'tpope/vim-surround' " Surround text objects with delimeters
+  Plug 'tpope/vim-repeat' " Fixes dot repeat functionality on some plugins
+  Plug 'morhetz/gruvbox' " gruvbox colorscheme
+  Plug 'EdenEast/nightfox.nvim' " neovim nightfox colorscheme
+  Plug 'arcticicestudio/nord-vim' " vim nord colorscheme
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " fzf vim
+  Plug 'junegunn/fzf.vim'
+  Plug 'preservim/nerdtree' " Tree drawer
+  Plug 'ryanoasis/vim-devicons' " Icons 
+  Plug 'vim-airline/vim-airline' " Status bar
+  Plug 'vim-airline/vim-airline-themes' " Status bar themes
   Plug 'tpope/vim-commentary' " gcc sttyle commenting
   Plug 'jiangmiao/auto-pairs' " Auto pair paranthesis, quotations, etc
   Plug 'vim-scripts/AutoComplPop' " Automatically show vim's built in completion
   " Not neccessary to have plugins
   Plug 'Yggdroot/indentLine' " Indent rules
   Plug 'airblade/vim-gitgutter' " shows a 'gutter' of diff changes
-  Plug 'junegunn/fzf.vim' " fuzzy finding
   Plug 'sheerun/vim-polyglot' " Better syntax highlighting
-  Plug 'lervag/vimtex' " vim syntax highlighting and more 
   call plug#end()
 endif
 
 " set colorscheme
-colorscheme nordfox
+set t_Co=256
+set background=dark
+let g:gruvbox_termcolors = 256
+colorscheme nord
+
+" Set airline theme
+let g:airline_powerline_fonts = 1
+" let g:airline_theme='nord'
+
+" vim-devicons
+set encoding=UTF-8
+
+" vim indentline configuration
+let g:indentLine_char_list = ['▏']
 
 " make Y consitent with D and C (yank til end)
 map Y y$
@@ -204,8 +228,8 @@ map Y y$
 " better command-line completion
 set wildmenu
 
-" disable search highlighting with <C-L> when refreshing screen
-nnoremap <C-L> :nohl<CR><C-L>
+" disable search highlighting with <C-e> when refreshing screen
+nnoremap <C-e> :nohl<CR><C-e>
 
 " enable omni-completion
 set omnifunc=syntaxcomplete#Complete
@@ -217,30 +241,6 @@ nnoremap <C-j> <nop>
 nnoremap <C-k> <nop>
 inoremap <expr> <C-j> pumvisible() ? "<C-n>" : "<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "<C-p>" : "<C-k>"
-
-" force some files to be specific file type
-au bufnewfile,bufRead $SNIPPETS/md/* set ft=pandoc
-au bufnewfile,bufRead $SNIPPETS/sh/* set ft=sh
-au bufnewfile,bufRead $SNIPPETS/bash/* set ft=bash
-au bufnewfile,bufRead $SNIPPETS/go/* set ft=go
-au bufnewfile,bufRead $SNIPPETS/c/* set ft=c
-au bufnewfile,bufRead $SNIPPETS/html/* set ft=html
-au bufnewfile,bufRead $SNIPPETS/css/* set ft=css
-au bufnewfile,bufRead $SNIPPETS/js/* set ft=javascript
-au bufnewfile,bufRead $SNIPPETS/python/* set ft=python
-au bufnewfile,bufRead $SNIPPETS/perl/* set ft=perl
-au bufnewfile,bufRead user-data set ft=yaml
-au bufnewfile,bufRead meta-data set ft=yaml
-au bufnewfile,bufRead *.bash* set ft=bash
-au bufnewfile,bufRead *.{peg,pegn} set ft=config
-au bufnewfile,bufRead *.profile set filetype=sh
-au bufnewfile,bufRead *.crontab set filetype=crontab
-au bufnewfile,bufRead *ssh/config set filetype=sshconfig
-au bufnewfile,bufRead .dockerignore set filetype=gitignore
-au bufnewfile,bufRead *gitconfig set filetype=gitconfig
-au bufnewfile,bufRead /tmp/psql.edit.* set syntax=sql
-au bufnewfile,bufRead *.go set spell spellcapcheck=0
-au bufnewfile,bufRead commands.yaml set spell
 
 "fix bork bash detection
 if has("eval")  " vim-tiny detection
@@ -259,12 +259,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 " functions keys
 map <F1> :set number!<CR> :set relativenumber!<CR>
-nmap <F2> :call <SID>SynStack()<CR>
-set pastetoggle=<F3>
-map <F4> :set list!<CR>
-map <F5> :set cursorline!<CR>
-map <F7> :set spell!<CR>
-map <F12> :set fdm=indent<CR>
+map <F2> :set spell!<CR>
 
 nmap <leader>2 :set paste<CR>i
 
@@ -282,56 +277,33 @@ nnoremap <down> <C-x>
 noremap <C-n> <C-d>
 noremap <C-p> <C-b>
 
-"####################### Netrw configuration #######################
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split=4
-let g:netrw_altv=1
-let g:netrw_winsize=25
-
-" function that toggles netrw
-function! ToggleNetrw()
-  if g:NetrwIsOpen
-    let i = bufnr("$")
-    while (i >= 1)
-      if (getbufvar(i, "&filetype") == "netrw")
-        silent exe "bwipeout " . i
-      endif
-      let i-=1
-    endwhile
-    let g:NetrwIsOpen=0
-  else
-    let g:NetrwIsOpen=1
-    silent Vexplore
-  endif
-endfunction
-
-" Close netrw if its the only open buffer
-autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw"|| &buftype == 'quickfix' |q|endif
-
-let g:NetrwIsOpen=0
-noremap <silent> <leader>e :call ToggleNetrw()<CR>
-"###################################################################
-
-
 " indentLine exclusions
 let g:indentLine_fileTypeExclude = ["vimwiki", "help", "undotree", "diff"]
 let g:indentLine_bufTypeExclude = ["help", "terminal"]
 let g:indentLine_indentLevel = 6
 
 " indentLine conceal settings
-let g:indentLine_setConceal = 1
+let g:indentLine_setConceal = 6
 let g:indentLine_concealCursor = "inc"
 let g:indentLine_conceallevel = 2
 
 " chars to display
 let g:indentLine_char_list = '|'
 
-" Set TMUX window name to name of file
-"au fileopened * !tmux rename-window TESTING
-
 " fzf  mapping 
-noremap <leader>f :Files<CR>
+nnoremap <leader>f :Files <CR> 
+nnoremap <leader>fg :Rg <CR> 
+
+" nerdtree
+nnoremap <leader>e :NERDTreeToggle<CR>
+
+" Move blocks of code
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " These filetypes will use 4 spaces instead of the default 2 spaces
 autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab
