@@ -1,9 +1,16 @@
 #!/bin/bash
 
-main_monitor=$(xrandr --query | grep 'DP-1-1')
+external_monitor=$(xrandr --query | grep 'DP-1-1')
+capture_monitor=$(xrandr --query | grep 'HDMI-2')
 
-if [[ $main_monitor = *connected* || $second_monitor = *connected* ]]; then
+if [[ $external_monitor = *connected* ]]; then
+  echo "external monitor connected"
     --output eDP-1 --primary --mode 1920x1080 --rotate normal --output DP-1-1 --mode 2560x1440 --rotate normal --right-of eDP-1
+fi
+
+if [[ $capture_monitor = *connected* ]]; then
+  echo "external monitor connected"
+    --output eDP-1 --primary --mode 1920x1080 --rotate normal --output HDMI-2 --mode 1920x1080 --rotate normal --right-of eDP-1
 fi
 
 if [ `xrandr | grep -c 3840` -ne 0 ]; then   # running dual-head

@@ -11,3 +11,7 @@ polybar main &
 if [[ $(xrandr -q | grep 'DP-1-1 connected') ]]; then
     polybar external &
 fi
+
+if [[ $(xrandr -q | grep 'HDMI-2 connected') ]]; then
+    polybar capture &
+fi
