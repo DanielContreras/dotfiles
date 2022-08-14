@@ -10,7 +10,6 @@ return require("packer").startup(function()
 	use("wbthomason/packer.nvim") -- have packer manage itself
 	use("nvim-lua/popup.nvim") -- dependancy for something?
 	use("EdenEast/nightfox.nvim") -- color theme
-	use("folke/tokyonight.nvim") -- tokyonight theme
 	use("kyazdani42/nvim-web-devicons") -- icons
 	use("kyazdani42/nvim-tree.lua") -- folder tree
 	use("nvim-lualine/lualine.nvim") -- status line
@@ -20,7 +19,6 @@ return require("packer").startup(function()
 	use("romgrk/barbar.nvim") -- Add buffers to the top of the editor
 	use("nvim-lua/plenary.nvim") -- telescope dependancy
 	use("fladson/vim-kitty") -- kitty syntax highlighting
-	use("akinsho/toggleterm.nvim") -- toggle terminal inside nvim session
 	use("p00f/clangd_extensions.nvim") -- clangd_extensions
 	use("lewis6991/gitsigns.nvim") -- git signs (seems to cause some errors)
 	use("kylechui/nvim-surround") -- vim surround
