@@ -10,6 +10,7 @@ return require("packer").startup(function()
 	use("wbthomason/packer.nvim") -- have packer manage itself
 	use("nvim-lua/popup.nvim") -- dependancy for something?
 	use("EdenEast/nightfox.nvim") -- color theme
+	use("folke/tokyonight.nvim") -- color theme
 	use("kyazdani42/nvim-web-devicons") -- icons
 	use("kyazdani42/nvim-tree.lua") -- folder tree
 	use("nvim-lualine/lualine.nvim") -- status line

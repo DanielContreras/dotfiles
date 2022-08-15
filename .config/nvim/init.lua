@@ -1,6 +1,6 @@
 require("settings")
 require("mappings")
-require("colorschemes-config.nordfox")
+require("colorschemes-config.tokyonight")
 require("lualine-config")
 require("packer-config")
 require("nvim-tree-config")
