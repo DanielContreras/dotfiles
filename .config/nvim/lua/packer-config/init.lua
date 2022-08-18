@@ -17,7 +17,7 @@ return require("packer").startup(function()
 	use("windwp/nvim-autopairs") -- Auto match paranthesis, qutotations, etc
 	use("numToStr/Comment.nvim") -- Commenting plugin
 	use("rcarriga/nvim-notify") -- fancy notifications
-	use("romgrk/barbar.nvim") -- Add buffers to the top of the editor
+	-- use("romgrk/barbar.nvim") -- Add buffers to the top of the editor
 	use("nvim-lua/plenary.nvim") -- telescope dependancy
 	use("fladson/vim-kitty") -- kitty syntax highlighting
 	use("p00f/clangd_extensions.nvim") -- clangd_extensions
