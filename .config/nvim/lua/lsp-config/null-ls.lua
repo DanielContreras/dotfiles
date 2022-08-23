@@ -11,6 +11,7 @@ null_ls.setup({
 		formatting.eslint,
 		formatting.autopep8,
 		formatting.stylua,
+    formatting.cmake_format,
 		-- formatting.clang_format,
 		formatting.beautysh,
 		formatting.latexindent,

@@ -16,7 +16,7 @@ return require("packer").startup(function()
 	use("nvim-lualine/lualine.nvim") -- status line
 	use("windwp/nvim-autopairs") -- Auto match paranthesis, qutotations, etc
 	use("numToStr/Comment.nvim") -- Commenting plugin
-	use("rcarriga/nvim-notify") -- fancy notifications
+	-- use("rcarriga/nvim-notify") -- fancy notifications
 	-- use("romgrk/barbar.nvim") -- Add buffers to the top of the editor
 	use("nvim-lua/plenary.nvim") -- telescope dependancy
 	use("fladson/vim-kitty") -- kitty syntax highlighting
