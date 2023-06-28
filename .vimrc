@@ -17,15 +17,17 @@ endif
 
 set nocompatible
 
+set t_Co=256
+
 " set mouse support
 set mouse=a
 
 " set cursor style in normal and insert mode
 if &term =~ '^xterm'
-    " normal mode - solid block
-    let &t_EI .= "\<Esc>[2 q"
-    " insert mode - solic line
-    let &t_SI .= "\<Esc>[6 q"
+  " normal mode - solid block
+  let &t_EI .= "\<Esc>[2 q"
+  " insert mode - solic line
+  let &t_SI .= "\<Esc>[6 q"
 endif
 
 " tmux Compatible
@@ -113,7 +115,7 @@ set nowritebackup
 set icon
 
 " center the cursor always on the screen
-set scrolloff=9
+set scrolloff=8
 
 " highlight search hits
 set hlsearch
@@ -184,20 +186,19 @@ nnoremap confr :source $HOME/.vimrc<CR>
 " only load plugins if Plug detected
 if filereadable(expand("~/.vim/autoload/plug.vim"))
   call plug#begin('~/.local/share/vim/plugins')
-  Plug 'tpope/vim-fugitive' " Git stuff
   Plug 'tpope/vim-surround' " Surround text objects with delimiters
   Plug 'tpope/vim-repeat' " Fixes dot repeat functionality on some plugins
+  Plug 'tpope/vim-fugitive' 
   Plug 'ghifarit53/tokyonight-vim' " colorscheme
   Plug 'neoclide/coc.nvim', {'branch': 'release'} " LSP support
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " fzf vim
   Plug 'junegunn/fzf.vim'
   Plug 'preservim/nerdtree' " Tree drawer
   Plug 'ryanoasis/vim-devicons' " Icons 
-  Plug 'itchyny/lightline.vim' " light weight but extensible statusline
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
   Plug 'tpope/vim-commentary' " gcc style commenting
   Plug 'jiangmiao/auto-pairs' " Auto pair parenthesis, quotations, etc
-  Plug 'vim-scripts/AutoComplPop' " Automatically show vim's built in completion
-  Plug 'Yggdroot/indentLine' " Indent rules
   Plug 'airblade/vim-gitgutter' " shows a 'gutter' of diff changes
   Plug 'sheerun/vim-polyglot' " Better syntax highlighting
   call plug#end()
@@ -208,28 +209,12 @@ set termguicolors
 
 let g:tokyonight_style = 'storm' " available: night, storm
 let g:tokyonight_enable_italic = 0
-
 colorscheme tokyonight
 
-" Set lightline configuration
-set laststatus=2
-set noshowmode " this disables -- INSERT -- since it's on our status bar
-let g:lightline = {
-      \ 'colorscheme': 'tokyonight',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ }
+let g:airline_powerline_fonts = 1
 
 " vim-devicons
 set encoding=UTF8
-
-" vim indentline configuration
-let g:indentLine_char_list = ['▏']
 
 " make Y consistent with D and C (yank til end)
 map Y y$
@@ -285,19 +270,6 @@ nnoremap <down> <C-x>
 " Better page down and page up
 noremap <C-n> <C-d>
 noremap <C-p> <C-b>
-
-" indentLine exclusions
-let g:indentLine_fileTypeExclude = ["vimwiki", "help", "undotree", "diff"]
-let g:indentLine_bufTypeExclude = ["help", "terminal"]
-let g:indentLine_indentLevel = 6
-
-" indentLine conceal settings
-let g:indentLine_setConceal = 6
-let g:indentLine_concealCursor = "inc"
-let g:indentLine_conceallevel = 2
-
-" chars to display
-let g:indentLine_char_list = '|'
 
 " fzf  mapping 
 nnoremap <leader>f :Files <CR> 
@@ -443,7 +415,7 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
