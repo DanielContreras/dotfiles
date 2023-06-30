@@ -189,7 +189,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'tpope/vim-surround' " Surround text objects with delimiters
   Plug 'tpope/vim-repeat' " Fixes dot repeat functionality on some plugins
   Plug 'tpope/vim-fugitive' 
-  Plug 'ghifarit53/tokyonight-vim' " colorscheme
+  Plug 'catppuccin/vim', { 'as': 'catppuccin'  }
   Plug 'neoclide/coc.nvim', {'branch': 'release'} " LSP support
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " fzf vim
   Plug 'junegunn/fzf.vim'
@@ -207,9 +207,8 @@ endif
 " tokyonight_style
 set termguicolors
 
-let g:tokyonight_style = 'storm' " available: night, storm
-let g:tokyonight_enable_italic = 0
-colorscheme tokyonight
+colorscheme catppuccin_macchiato
+let g:airline_theme = 'catppuccin_macchiato'
 
 let g:airline_powerline_fonts = 1
 
