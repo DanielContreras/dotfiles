@@ -17,12 +17,19 @@ lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({buffer = bufnr})
 end)
 
--- This disables the inline lsp stuff (for clangd)
+-- This disables the semantic hightlighting for clangd
 -- require('lspconfig').clangd.setup({
 --   on_init = function(client)
 --     client.server_capabilities.semanticTokensProvider = nil
 --   end,
 -- })
+
+-- This should disable semantic hightlighting for all servers but doesn't for clangd
+lsp.set_server_config({
+  on_init = function(client)
+    client.server_capabilities.semanticTokensProvider = nil
+  end,
+})
 
 lsp.setup()
 

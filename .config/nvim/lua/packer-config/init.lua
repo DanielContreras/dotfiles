@@ -10,7 +10,7 @@ vim.cmd([[packadd packer.nvim]])
 return require("packer").startup(function(use)
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
-	use("folke/tokyonight.nvim") -- color theme
+	use({ "catppuccin/nvim", as = "catppuccin" })
 	use("p00f/nvim-ts-rainbow") -- colorful delimeters
 	use("tpope/vim-repeat") -- plugin support for . command
 	use("ggandor/lightspeed.nvim") -- Motion plugin for better navigation
@@ -65,30 +65,30 @@ return require("packer").startup(function(use)
 	use("nvim-treesitter/nvim-treesitter-refactor")
 
 	--> LSP
-	 use({
-	 	"VonHeikemen/lsp-zero.nvim",
-	 	branch = "v2.x",
-	 	requires = {
-	 		-- LSP Support
-	 		{ "neovim/nvim-lspconfig" }, -- Required
-	 		{ -- Optional
-	 			"williamboman/mason.nvim",
-	 			run = function()
-	 				pcall(vim.cmd, "MasonUpdate")
-	 			end,
-	 		},
-	 		{ "williamboman/mason-lspconfig.nvim" }, -- Optional
-	
-	 		-- Autocompletion
-	 		{ "hrsh7th/nvim-cmp" }, -- Required
-	 		{ "hrsh7th/cmp-nvim-lsp" }, -- Required
-	 		{ "L3MON4D3/LuaSnip" }, -- Required
-	 		{ "hrsh7th/cmp-buffer" }, -- Autocompletion plugin
-	 		{ "hrsh7th/cmp-path" }, -- Autocompletion plugin for paths
-	 		{ "hrsh7th/cmp-nvim-lua" }, -- Autocompletion plugin for Lua
-	 		{ "hrsh7th/cmp-cmdline" }, -- Autocompletion plugin
-	 	},
-	 })
-	 use("onsails/lspkind.nvim") -- inject lsp diagnostics, formatting, code actions
-	 use("jose-elias-alvarez/null-ls.nvim") -- diagnostics, formatting, code actions, etc
+	use({
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v2.x",
+		requires = {
+			-- LSP Support
+			{ "neovim/nvim-lspconfig" }, -- Required
+			{ -- Optional
+				"williamboman/mason.nvim",
+				run = function()
+					pcall(vim.cmd, "MasonUpdate")
+				end,
+			},
+			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
+
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" }, -- Required
+			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
+			{ "L3MON4D3/LuaSnip" }, -- Required
+			{ "hrsh7th/cmp-buffer" }, -- Autocompletion plugin
+			{ "hrsh7th/cmp-path" }, -- Autocompletion plugin for paths
+			{ "hrsh7th/cmp-nvim-lua" }, -- Autocompletion plugin for Lua
+			{ "hrsh7th/cmp-cmdline" }, -- Autocompletion plugin
+		},
+	})
+	use("onsails/lspkind.nvim") -- inject lsp diagnostics, formatting, code actions
+	use("jose-elias-alvarez/null-ls.nvim") -- diagnostics, formatting, code actions, etc
 end)
