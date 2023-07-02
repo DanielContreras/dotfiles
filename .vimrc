@@ -195,8 +195,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'junegunn/fzf.vim'
   Plug 'preservim/nerdtree' " Tree drawer
   Plug 'ryanoasis/vim-devicons' " Icons 
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+  Plug 'itchyny/lightline.vim'
   Plug 'tpope/vim-commentary' " gcc style commenting
   Plug 'jiangmiao/auto-pairs' " Auto pair parenthesis, quotations, etc
   Plug 'airblade/vim-gitgutter' " shows a 'gutter' of diff changes
@@ -204,13 +203,26 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   call plug#end()
 endif
 
-" tokyonight_style
 set termguicolors
-
 colorscheme catppuccin_macchiato
-let g:airline_theme = 'catppuccin_macchiato'
 
-let g:airline_powerline_fonts = 1
+set laststatus=2
+set noshowmode
+let g:lightline = {
+        \ 'colorscheme': 'catppuccin_macchiato',
+        \ 'active': {
+        \   'left': [ [ 'mode' ],
+        \             [ 'gitbranch' ],
+        \             [ 'readonly', 'filename', 'modified' ] ],
+        \   'right': [ [ 'lineinfo' ],
+        \              [ 'percent' ],
+        \              [ 'fileencoding', 'fileformat', 'filetype' ] ]
+        \  },
+        \  'component_function': {
+        \   'gitbranch': 'FugitiveHead'
+        \ 
+        \  },
+        \ }
 
 " vim-devicons
 set encoding=UTF8
