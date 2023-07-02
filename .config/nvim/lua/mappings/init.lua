@@ -96,3 +96,11 @@ map("n", "<space>D", ":lua vim.lsp.buf.type_definition()<CR>", opts)
 map("n", "<space>rn", ":lua vim.lsp.buf.rename()<CR>", opts)
 map("n", "<space>ca", ":lua vim.lsp.buf.code_action()<CR>", opts)
 map("n", "gr", ":lua vim.lsp.buf.references()<CR>", opts)
+
+-- Trouble bindings
+map("n", "<leader>xx", ":TroubleToggle<cr>", opts)
+map("n", "<leader>xw", ":TroubleToggle workspace_diagnostics<cr>", opts)
+map("n", "<leader>xd", ":TroubleToggle document_diagnostics<cr>", opts)
+map("n", "<leader>xl", ":TroubleToggle loclist<cr>", opts)
+map("n", "<leader>xq", ":TroubleToggle quickfix<cr>", opts)
+map("n", "gR", ":TroubleToggle lsp_references<cr>", opts)
