@@ -1,5 +1,5 @@
 return {
-options = {
+	options = {
 		icons_enabled = true,
 		theme = "catppuccin",
 		section_separators = { left = "", right = "" },

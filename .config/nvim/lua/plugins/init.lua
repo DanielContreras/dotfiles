@@ -33,16 +33,16 @@ return {
 
 	--> Treesitter
 	{
+		-- TODO: for some reason requiring the way we did with the other plugins
+		-- isn't working properly. For the moment, Treesitter congfg is going to be
+		-- in the after/ folder.
 		"nvim-treesitter/nvim-treesitter",
-		lazy = true,
-		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
 		build = ":TSUpdate",
-		opts = function()
-			return require("plugins.configs.treesitter")
-		end,
-		config = function(_, opts)
-			require("nvim-treesitter.configs").setup(opts)
-		end,
+		{
+			"p00f/nvim-ts-rainbow",
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			"nvim-treesitter/nvim-treesitter-refactor",
+		},
 	},
 
 	--> Telescope
@@ -50,8 +50,8 @@ return {
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.2",
 		-- or                              , branch = '0.1.x',
-		lazy = true,
-		cmd = "Telescope",
+		-- lazy = true,
+		-- cmd = "Telescope",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = function()
 			return require("plugins.configs.telescope")
@@ -88,7 +88,6 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
-		event = "InsertEnter",
 		opts = function()
 			return require("plugins.configs.lualine")
 		end,
@@ -144,7 +143,6 @@ return {
 	--> indent-blankline
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "InsertEnter",
 		opts = function()
 			return require("plugins.configs.indent")
 		end,

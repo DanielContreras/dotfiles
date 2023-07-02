@@ -1,5 +1,5 @@
 return {
-defaults = {
+	defaults = {
 
 		prompt_prefix = " ",
 		selection_caret = " ",
@@ -29,10 +29,13 @@ defaults = {
 				["<PageUp>"] = require("telescope.actions").results_scrolling_up,
 				["<PageDown>"] = require("telescope.actions").results_scrolling_down,
 
-				["<Tab>"] = require("telescope.actions").toggle_selection + require("telescope.actions").move_selection_worse,
-				["<S-Tab>"] = require("telescope.actions").toggle_selection + require("telescope.actions").move_selection_better,
+				["<Tab>"] = require("telescope.actions").toggle_selection
+					+ require("telescope.actions").move_selection_worse,
+				["<S-Tab>"] = require("telescope.actions").toggle_selection
+					+ require("telescope.actions").move_selection_better,
 				["<C-q>"] = require("telescope.actions").send_to_qflist + require("telescope.actions").open_qflist,
-				["<M-q>"] = require("telescope.actions").send_selected_to_qflist + require("telescope.actions").open_qflist,
+				["<M-q>"] = require("telescope.actions").send_selected_to_qflist
+					+ require("telescope.actions").open_qflist,
 				["<C-l>"] = require("telescope.actions").complete_tag,
 				["<C-_>"] = require("telescope.actions").which_key, -- keys from pressing <C-/>
 			},
@@ -44,10 +47,13 @@ defaults = {
 				["<C-v>"] = require("telescope.actions").select_vertical,
 				["<C-t>"] = require("telescope.actions").select_tab,
 
-				["<Tab>"] = require("telescope.actions").toggle_selection + require("telescope.actions").move_selection_worse,
-				["<S-Tab>"] = require("telescope.actions").toggle_selection + require("telescope.actions").move_selection_better,
+				["<Tab>"] = require("telescope.actions").toggle_selection
+					+ require("telescope.actions").move_selection_worse,
+				["<S-Tab>"] = require("telescope.actions").toggle_selection
+					+ require("telescope.actions").move_selection_better,
 				["<C-q>"] = require("telescope.actions").send_to_qflist + require("telescope.actions").open_qflist,
-				["<M-q>"] = require("telescope.actions").send_selected_to_qflist + require("telescope.actions").open_qflist,
+				["<M-q>"] = require("telescope.actions").send_selected_to_qflist
+					+ require("telescope.actions").open_qflist,
 
 				["j"] = require("telescope.actions").move_selection_next,
 				["k"] = require("telescope.actions").move_selection_previous,

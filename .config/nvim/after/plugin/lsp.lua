@@ -17,20 +17,6 @@ lsp.on_attach(function(client, bufnr)
 	lsp.default_keymaps({ buffer = bufnr })
 end)
 
--- This disables smenantic hightlighting for all servers
-lsp.set_server_config({
-	on_init = function(client)
-		client.server_capabilities.semanticTokensProvider = nil
-	end,
-})
-
--- This disables the semantic hightlighting for clangd since the above doesn't work for clangd
-require("lspconfig").clangd.setup({
-	on_init = function(client)
-		client.server_capabilities.semanticTokensProvider = nil
-	end,
-})
-
 lsp.setup()
 
 -- You need to setup `cmp` after lsp-zero

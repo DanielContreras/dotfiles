@@ -1,5 +1,5 @@
-return {
-ensure_installed = {
+require("nvim-treesitter.configs").setup({
+	ensure_installed = {
 		"python",
 		"c",
 		"cpp",
@@ -77,4 +77,4 @@ ensure_installed = {
 			-- E.g. whether to delete the angle bracket or whole tag in  <pair> </pair>
 		},
 	},
-}
+})
