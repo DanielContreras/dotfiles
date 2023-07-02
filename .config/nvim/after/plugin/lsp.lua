@@ -1,4 +1,4 @@
-local lsp = require('lsp-zero').preset({})
+local lsp = require("lsp-zero").preset({})
 
 lsp.ensure_installed({
 	"cssls",
@@ -8,35 +8,34 @@ lsp.ensure_installed({
 	"pyright",
 	"lua_ls",
 	"jsonls",
-  'jdtls',
-  'tsserver',
-  'vimls',
+	"jdtls",
+	"tsserver",
+	"vimls",
 })
 
 lsp.on_attach(function(client, bufnr)
-  lsp.default_keymaps({buffer = bufnr})
+	lsp.default_keymaps({ buffer = bufnr })
 end)
 
 -- This disables smenantic hightlighting for all servers
 lsp.set_server_config({
-  on_init = function(client)
-    client.server_capabilities.semanticTokensProvider = nil
-  end,
+	on_init = function(client)
+		client.server_capabilities.semanticTokensProvider = nil
+	end,
 })
 
 -- This disables the semantic hightlighting for clangd since the above doesn't work for clangd
-require('lspconfig').clangd.setup({
-  on_init = function(client)
-    client.server_capabilities.semanticTokensProvider = nil
-  end,
+require("lspconfig").clangd.setup({
+	on_init = function(client)
+		client.server_capabilities.semanticTokensProvider = nil
+	end,
 })
 
 lsp.setup()
 
 -- You need to setup `cmp` after lsp-zero
-local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
-
+local cmp = require("cmp")
+local cmp_action = require("lsp-zero").cmp_action()
 
 local lspkind_stats_ok, lspkind = pcall(require, "lspkind")
 if not lspkind_stats_ok then

@@ -1,5 +1,5 @@
-require("lualine").setup({
-	options = {
+return {
+options = {
 		icons_enabled = true,
 		theme = "catppuccin",
 		section_separators = { left = "", right = "" },
@@ -26,4 +26,4 @@ require("lualine").setup({
 	},
 	tabline = {},
 	extensions = { "quickfix" },
-})
+}

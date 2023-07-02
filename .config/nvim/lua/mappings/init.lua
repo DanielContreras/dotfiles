@@ -64,8 +64,10 @@ map("n", "<Space>bl", "<Cmd>BufferOrderByLanguage<CR>", opts)
 map("n", "<Space>bw", "<Cmd>BufferOrderByWindowNumber<CR>", opts)
 
 -- Telescope mappings
--- map("n", "<leader>f", ":Telescope find_files<CR>", opts)
--- map("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
+map("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+map("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
+map("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+map("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
 
 -- Markdown Glow mapping
 vim.keymap.set("n", "<bs>", ":edit #<cr>", { silent = true })

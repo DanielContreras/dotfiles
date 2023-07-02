@@ -1,5 +1,5 @@
-require("indent_blankline").setup({
-	show_current_context = false,
+return {
+show_current_context = false,
 	show_current_context_start = true,
 	show_first_indent_level = true,
 	blankline_use_treesitter = true,
@@ -19,4 +19,4 @@ require("indent_blankline").setup({
 		"neo-tree",
 		"Trouble",
 	},
-})
+}
