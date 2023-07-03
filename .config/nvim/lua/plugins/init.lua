@@ -1,10 +1,7 @@
 return {
   --> LSP
   {
-    -- TODO: Lazy load all of this; at the moment it uses the old packer method
-    -- of using the after/ folder to load LSP configuration settings.
     "VonHeikemen/lsp-zero.nvim",
-    event = "VeryLazy",
     branch = "v2.x",
     dependencies = {
       -- LSP Support
@@ -34,9 +31,6 @@ return {
 
   --> Treesitter
   {
-    -- TODO: for some reason requiring the way we did with the other plugins
-    -- isn't working properly. For the moment, Treesitter congfg is going to be
-    -- in the after/ folder.
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     event = "VeryLazy",
