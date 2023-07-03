@@ -4,7 +4,7 @@ return {
 		theme = "catppuccin",
 		section_separators = { left = "", right = "" },
 		component_separators = "",
-		disabled_filetypes = {},
+		disabled_filetypes = { "NvimTree" },
 		always_divide_middle = true,
 		globalstatus = false,
 	},
