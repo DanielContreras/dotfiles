@@ -39,3 +39,5 @@ set.swapfile = false
 set.backup = false
 
 set.laststatus = 3
+
+set.showmode = false
