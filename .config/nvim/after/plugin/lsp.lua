@@ -112,3 +112,10 @@ cmp.setup({
 		ghost_text = true,
 	},
 })
+
+-- (nvim-lspconfig) Change diagnostic symbols in the sign column
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
