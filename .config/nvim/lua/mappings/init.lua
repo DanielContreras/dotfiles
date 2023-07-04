@@ -6,6 +6,9 @@ vim.g.mapleader = " "
 
 --> Normal
 
+-- set <C-c> to yank into the system clipboard buffer
+map("n", "<C-c>", '"*yy', opts)
+
 map("n", "<C-e>", ":nohl<CR>", opts)
 map("n", "<F2>", ":set spell!<CR>", opts)
 
