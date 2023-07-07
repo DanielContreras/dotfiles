@@ -93,6 +93,12 @@ return {
     end,
   },
 
+  --> Vim-Fugitive
+  {
+    "tpope/vim-fugitive",
+    event = "VeryLazy",
+  },
+
   --> Gitsigns
   {
     "lewis6991/gitsigns.nvim",
