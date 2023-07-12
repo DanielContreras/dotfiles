@@ -12,10 +12,10 @@ null_ls.setup({
 		formatting.eslint,
 		formatting.autopep8,
 		formatting.stylua,
-		formatting.cmake_format,
 		formatting.beautysh,
 		formatting.latexindent,
 		formatting.prettier,
+		formatting.clang_format,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
@@ -33,4 +33,3 @@ null_ls.setup({
 		end
 	end,
 })
-
