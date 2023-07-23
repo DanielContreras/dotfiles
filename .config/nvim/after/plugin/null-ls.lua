@@ -16,6 +16,7 @@ null_ls.setup({
 		formatting.latexindent,
 		formatting.prettier,
 		formatting.clang_format,
+    	formatting.rust_analyzer,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
