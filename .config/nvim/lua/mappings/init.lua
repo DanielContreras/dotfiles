@@ -108,3 +108,7 @@ map("n", "<leader>xd", ":TroubleToggle document_diagnostics<cr>", opts)
 map("n", "<leader>xl", ":TroubleToggle loclist<cr>", opts)
 map("n", "<leader>xq", ":TroubleToggle quickfix<cr>", opts)
 map("n", "gR", ":TroubleToggle lsp_references<cr>", opts)
+
+-- DAP 
+map("n", "<leader>db", ":DapToggleBreakpoint<cr>", opts)
+map("n", "<leader>dr", ":DapContinue<cr>", opts)
