@@ -12,7 +12,7 @@ lsp.ensure_installed({
   "jdtls",
   "tsserver",
   "vimls",
-  "rust_analyzer"
+  "rust_analyzer",
 })
 
 lsp.on_attach(function(client, bufnr)
